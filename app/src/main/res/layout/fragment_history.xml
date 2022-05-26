@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/nav_header_vertical_spacing"
+        tools:context=".CourseStaggedActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/normalPadding"
+                android:layout_marginTop="28dp"
+                android:layout_marginRight="@dimen/normalPadding">
+
+                <TextView
+                    style="@style/viewParent.headerText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/svb_bariol_regular"
+                    android:text="Lớp của tôi"
+                    android:textColor="@color/header_text"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/round_corner"
+                    android:fontFamily="@font/svb_bariol_regular"
+                    android:minWidth="70dp"
+                    android:minHeight="30dp"
+                    android:text="Lọc"
+                    android:textAllCaps="false"
+                    android:textColor="@color/bottomNavigationBackground"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/edit_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/normalPadding"
+                android:layout_marginTop="@dimen/smallPadding"
+                android:layout_marginRight="@dimen/normalPadding"
+                android:background="@drawable/round_corner"
+                android:digits="0,1,2,3,4,5,6,7,8,9,*,qwertzuiopasdfghjklyxcvbnm"
+                android:drawableStart="@drawable/ic_search_black_24dp"
+                android:drawablePadding="@dimen/drawable_left"
+                android:fontFamily="@font/bariol_regular"
+                android:gravity="center_vertical"
+                android:hint="Tìm kiếm"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingLeft="@dimen/normalPadding"
+                android:paddingTop="@dimen/vertical_search"
+                android:paddingRight="@dimen/normalPadding"
+                android:paddingBottom="@dimen/vertical_search"
+                android:singleLine="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/color_title"
+                android:textSize="14sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/horizontal_card"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/smallPadding"
+                android:paddingTop="@dimen/normalPadding"
+                android:paddingRight="@dimen/smallPadding">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_notify"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_class_preview" />
+                <include layout="@layout/item_class_preview"/>
+                <include layout="@layout/item_class_preview"/>
+                <include layout="@layout/item_class_preview"/>
+                <include layout="@layout/item_class_preview"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

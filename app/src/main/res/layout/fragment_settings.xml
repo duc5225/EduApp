@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/normalPadding">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/profileCircleImageView"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_edit_profile"
+                    />
+
+                <TextView
+                    android:id="@+id/usernameTextView"
+                    style="@style/viewParent.headerText"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@id/profileCircleImageView"
+                    android:text="User name"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/viewParent.headerText"
+                    android:layout_below="@id/usernameTextView"
+                    android:layout_toRightOf="@id/profileCircleImageView"
+                    android:text="Chỉnh sửa thông tin"
+                    android:textColor="#5D5C5C"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    style="@style/viewParent"
+                    android:src="@drawable/ic_more"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+
+            <TextView
+                style="@style/viewParent.headerText.settingsMiniTitle"
+                android:text="Ứng dụng"/>
+
+            <TextView
+                style="@style/viewParent.headerText.settingsTextIcon"
+                android:drawableLeft="@drawable/ic_baseline_settings_24"
+                android:text="Cài đặt" />
+
+            <TextView
+                style="@style/viewParent.headerText.settingsMiniTitle"
+                android:text="Thông báo"/>
+
+            <Switch
+                style="@style/settingsText"
+                android:checked="true"
+                android:drawableLeft="@drawable/ic_notifications"
+                android:text="Giáo viên" />
+
+            <TextView
+                style="@style/viewParent.headerText.settingsMiniTitle"
+                android:text="Tài khoản"/>
+
+            <TextView
+                style="@style/viewParent.headerText.settingsTextIcon"
+                android:drawableLeft="@drawable/ic_edit_password"
+                android:text="Nạp tiền" />
+
+            <TextView
+                style="@style/viewParent.headerText.settingsTextIcon"
+                android:drawableLeft="@drawable/ic_edit_profile"
+                android:text="Chỉnh sửa Profile" />
+
+            <TextView
+                style="@style/viewParent.headerText.settingsTextIcon"
+                android:drawableLeft="@drawable/ic_edit_password"
+                android:text="Change Password" />
+
+            <TextView
+                android:id="@+id/logout_button"
+                style="@style/viewParent.headerText.settingsTextIcon"
+                android:drawableLeft="@drawable/ic_logout"
+                android:text="Log out" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

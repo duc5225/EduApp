@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="@dimen/smallPadding"
+            android:fontFamily="@font/svb_bariol_regular"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/normalPadding"
+            android:text="Gửi đến tài khoản momo 0396854052, nội dung là mã thanh toán"
+            android:textColor="@color/header_text"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:background="@drawable/bottom_round_bg"/>
+
+                <RelativeLayout
+                    android:id="@+id/content_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="15dp"
+                    tools:context=".CreateClassFragment">
+
+                    <TextView
+                        android:id="@+id/title"
+                        style="@style/viewParent.headerText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="30dp"
+                        android:fontFamily="@font/svb_bariol_regular"
+                        android:text="Thêm lớp học"
+                        android:textColor="@color/header_text"
+                        android:textSize="35sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/class_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/title"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/round_corner"
+                        android:hint="Tên lớp học"
+                        android:paddingHorizontal="80dp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/fill_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/class_title"
+                        android:shadowColor="@color/black"
+                        app:cardElevation="@dimen/card_add_elevation"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/subject_layout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:startIconDrawable="@drawable/ic_baseline_library_books_24">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/subject_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="60dp"
+                                    android:background="@drawable/round_corner"
+                                    android:hint="Môn học"
+                                    android:inputType="textEmailAddress"
+                                    android:textColorHint="@color/white" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/topic_layout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:startIconDrawable="@drawable/ic_baseline_topic_24">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/topic_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="60dp"
+                                    android:background="@drawable/round_corner"
+                                    android:hint="Chủ đề"
+                                    android:inputType="textEmailAddress"
+                                    android:textColorHint="@color/white" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="bottom"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/time_layout"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:endIconDrawable="@drawable/ic_baseline_add_24"
+                                    app:endIconMode="custom"
+                                    app:startIconDrawable="@drawable/ic_baseline_access_time_24">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/time_edit"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="60dp"
+                                        android:background="@drawable/round_corner"
+                                        android:hint="Thời gian"
+                                        android:inputType="textEmailAddress"
+                                        android:textColorHint="@color/white" />
+
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <ImageButton
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="40dp"
+                                    android:layout_height="60dp"
+                                    android:background="@drawable/round_corner"
+                                    android:src="@drawable/ic_baseline_remove_24" />
+                            </LinearLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/address_layout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:startIconDrawable="@drawable/ic_baseline_house_24">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/address_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="60dp"
+                                    android:background="@drawable/round_corner"
+                                    android:hint="Địa chỉ"
+                                    android:inputType="textEmailAddress"
+                                    android:textColorHint="@color/white" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/phone_layout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:startIconDrawable="@drawable/ic_baseline_phone_24">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/phone_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="60dp"
+                                    android:background="@drawable/round_corner"
+                                    android:hint="Điện thoại"
+                                    android:inputType="textEmailAddress"
+                                    android:textColorHint="@color/white" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/fill_container"
+                                    android:fontFamily="@font/svb_bariol_regular"
+                                    android:gravity="center"
+                                    android:text="Hình thức học"
+                                    android:textColor="@color/color_title"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/smallPadding"
+                                    android:text="Online" />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/smallPadding"
+                                    android:text="Offline" />
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/description_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/fill_container"
+                        android:layout_marginStart="@dimen/smallPadding"
+                        android:layout_marginTop="@dimen/smallPadding"
+                        android:layout_marginEnd="@dimen/smallPadding"
+                        android:layout_marginBottom="@dimen/smallPadding"
+                        android:fontFamily="@font/svb_bariol_regular"
+                        android:gravity="center"
+                        android:text="Mô tả"
+                        android:textColor="@color/header_text"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/description_fill"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_below="@id/description_text"
+                        app:cardElevation="@dimen/card_add_elevation"
+                        app:cardUseCompatPadding="true">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:gravity="top|left"
+                            android:hint="Nhập mô tả"
+                            android:imeOptions="actionDone"
+                            android:padding="@dimen/smallPadding" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/time_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/description_fill"
+                        android:layout_marginStart="@dimen/smallPadding"
+                        android:layout_marginTop="@dimen/smallPadding"
+                        android:layout_marginEnd="@dimen/smallPadding"
+                        android:layout_marginBottom="@dimen/smallPadding"
+                        android:fontFamily="@font/svb_bariol_regular"
+                        android:gravity="center"
+                        android:text="Thời gian"
+                        android:textColor="@color/header_text"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/time_fill"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_below="@id/time_text"
+                        app:cardElevation="@dimen/card_add_elevation"
+                        app:cardUseCompatPadding="true">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:gravity="top|left"
+                            android:hint="Nhập thời gian mong muốn"
+                            android:imeOptions="actionDone"
+                            android:padding="@dimen/smallPadding" />
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_below="@+id/content_layout"/>
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="@dimen/smallPadding"
+            android:background="@drawable/top_rounded_corners"
+            android:layout_alignParentBottom="true">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp"
+                android:backgroundTint="@color/white"
+                android:paddingHorizontal="@dimen/normalPadding"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/svb_bariol_regular"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text="Đăng yêu cầu này ngay"
+                    android:textColor="@color/color_title"
+                    android:textSize="18sp"
+                     />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sign_up_btn"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="@drawable/round_corner"
+                    android:backgroundTint="@color/background_blue"
+                    android:paddingHorizontal="@dimen/smallPadding"
+                    android:text="Đăng yêu cầu"
+                    android:textColor="@color/header_text"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</layout>

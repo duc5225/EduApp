@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <ImageView
+            android:scaleType="centerCrop"
+            android:padding="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="0dp"
+            android:src="@drawable/cs" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="@dimen/smallPadding"
+            android:fontFamily="@font/svb_bariol_regular"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/normalPadding"
+            android:text="Bạn cần được giúp đỡ? Hãy liên hệ với chúng tôi"
+            android:textColor="@color/header_text"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingVertical="@dimen/normalPadding">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/helper_box"
+                android:layout_height="@dimen/helper_box"
+                android:layout_marginHorizontal="@dimen/smallPadding"
+                android:layout_marginVertical="@dimen/normalPadding"
+                android:shadowColor="@color/grey"
+                android:shadowRadius="50"
+                app:cardCornerRadius="@dimen/normalPadding"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/normalPadding">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_baseline_phone_24"
+                        app:tint="@color/setting_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="Điện thoại \n0396854052"
+                        android:textColor="@color/header_text"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/helper_box"
+                android:layout_height="@dimen/helper_box"
+                android:layout_marginHorizontal="@dimen/smallPadding"
+                android:layout_marginVertical="@dimen/normalPadding"
+                android:shadowColor="@color/grey"
+                android:shadowRadius="50"
+                app:cardCornerRadius="@dimen/normalPadding"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/normalPadding">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_baseline_email_24"
+                        app:tint="@color/setting_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="phanduc125225\n@gmail.com"
+                        android:textColor="@color/header_text"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</layout>

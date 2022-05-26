@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/smallVerticalItemMargin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/smallPadding">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/top_text_subtitle_card"
+            android:layout_marginEnd="@dimen/top_text_subtitle_card"
+            android:layout_marginBottom="@dimen/top_text_subtitle_card"
+            android:layout_weight=".06"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_user"
+            android:padding="12dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/nav_header_vertical_spacing"
+            android:layout_weight=".99"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/viewParent.headerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/svb_bariol_regular"
+                android:text="Phan Việt Đức"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="3dp"
+                android:fontFamily="@font/bariol_regular"
+                android:text="Toán, Lý, Hoá, CNTT."
+                android:textColor="@color/bottomNavigationTextColor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bariol_regular"
+                android:text="90.000đ / 1h"
+                android:textColor="@color/orange"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="@dimen/top_text_subtitle_card"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="@dimen/top_text_subtitle_card"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_heart_grey" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
