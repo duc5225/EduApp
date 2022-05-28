@@ -1,75 +1,76 @@
+/*
+ * Copyright (c) 2020. rogergcc
+ */
+
 package com.example.eduapp.model;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
 
 public class Subject {
 
-  @SerializedName("id")
-  @Expose
-  private Integer id;
-  @SerializedName("code")
-  @Expose
-  private String code;
-  @SerializedName("name")
-  @Expose
-  private String name;
-  @SerializedName("classList")
-  @Expose
-  private List<Object> classList = null;
+    private int Id;
+    private int imageSubject;
+    private String name;
+    private String quantitySubject;
+    private String urlSubject;
 
-  /**
-   * No args constructor for use in serialization
-   */
-  public Subject() {
-  }
+    public Subject(int id, int imageSubject, String name, String quantitySubject) {
+        Id = id;
+        this.imageSubject = imageSubject;
+        this.name = name;
+        this.quantitySubject = quantitySubject;
+    }
 
-  /**
-   * @param code
-   * @param name
-   * @param id
-   * @param classList
-   */
-  public Subject(Integer id, String code, String name, List<Object> classList) {
-    super();
-    this.id = id;
-    this.code = code;
-    this.name = name;
-    this.classList = classList;
-  }
+    public Subject(int imageSubject, String name, String quantitySubject) {
+        this.imageSubject = imageSubject;
+        this.name = name;
+        this.quantitySubject = quantitySubject;
+    }
 
-  public Integer getId() {
-    return id;
-  }
+    public int getId() {
+        return Id;
+    }
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+    public void setId(int id) {
+        Id = id;
+    }
 
-  public String getCode() {
-    return code;
-  }
+    public int getImageSubject() {
+        return imageSubject;
+    }
 
-  public void setCode(String code) {
-    this.code = code;
-  }
+    public void setImageSubject(int imageSubject) {
+        this.imageSubject = imageSubject;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public List<Object> getClassList() {
-    return classList;
-  }
+    public String getQuantitySubject() {
+        return quantitySubject;
+    }
 
-  public void setClassList(List<Object> classList) {
-    this.classList = classList;
-  }
+    public void setQuantitySubject(String quantitySubject) {
+        this.quantitySubject = quantitySubject;
+    }
 
+    public String getUrlSubject() {
+        return urlSubject;
+    }
+
+    public void setUrlSubject(String urlSubject) {
+        this.urlSubject = urlSubject;
+    }
+
+    @Override()
+    public boolean equals(Object other) {
+        if (other instanceof Subject) {
+            Subject subject = (Subject) other;
+            return subject.getId()==(this.getId());
+        }
+        return false;
+    }
 }

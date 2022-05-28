@@ -20,7 +20,7 @@ import com.example.eduapp.R;
 public class AlertDialog extends Dialog {
 
   public AlertDialog(Context context) {
-    super(context, R.style.ios_dialog_style);
+    super(context, R.style.alert_dialog_style);
   }
 
   public static class Builder {
@@ -135,16 +135,16 @@ public class AlertDialog extends Dialog {
       // set buttons
       if (mPositiveButtonText == null && mNegativeButtonText == null) {
         setPositiveButton("OK", null);
-        btnConfirm.setBackgroundResource(R.drawable.iosdialog_single_btn_selector);
+        btnConfirm.setBackgroundResource(R.drawable.alert_single_btn_selector);
         btnCancel.setVisibility(View.GONE);
         vertical_line.setVisibility(View.GONE);
       } else if (mPositiveButtonText != null && mNegativeButtonText == null) {
-        btnConfirm.setBackgroundResource(R.drawable.iosdialog_single_btn_selector);
+        btnConfirm.setBackgroundResource(R.drawable.alert_single_btn_selector);
         btnCancel.setVisibility(View.GONE);
         vertical_line.setVisibility(View.GONE);
       } else if (mPositiveButtonText == null && mNegativeButtonText != null) {
         btnConfirm.setVisibility(View.GONE);
-        btnCancel.setBackgroundResource(R.drawable.iosdialog_single_btn_selector);
+        btnCancel.setBackgroundResource(R.drawable.alert_single_btn_selector);
         vertical_line.setVisibility(View.GONE);
       }
       if (mPositiveButtonText != null) {

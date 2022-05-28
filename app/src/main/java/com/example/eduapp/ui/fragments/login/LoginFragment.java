@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -37,9 +38,9 @@ public class LoginFragment extends BaseFragment<LoginViewModel, FragmentLoginBin
 
         viewModel = new LoginViewModel();
 
-        final TextInputLayout usernameEditLayout = binding.signInUsernameLayout;
+        final TextInputLayout emailEditLayout = binding.signInEmailLayout;
         final TextInputLayout passwordEditLayout = binding.signInPasswordLayout;
-        final EditText usernameEditText = binding.signInUsernameEditText;
+        final EditText emailEditText = binding.signInEmailEditText;
         final EditText passwordEditText = binding.signInPasswordEditText;
         final Button loginButton = binding.signInBtn;
         final TextView signupButton = binding.signUpBtn;
@@ -55,11 +56,11 @@ public class LoginFragment extends BaseFragment<LoginViewModel, FragmentLoginBin
 
             @Override
             public void afterTextChanged(Editable s) {
-                viewModel.loginDataChanged(usernameEditText.getText().toString(),
+                viewModel.loginDataChanged(emailEditText.getText().toString(),
                     passwordEditText.getText().toString());
             }
         };
-        usernameEditText.addTextChangedListener(afterTextChangedListener);
+        emailEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
 
         loginButton.setEnabled(false);
@@ -67,19 +68,19 @@ public class LoginFragment extends BaseFragment<LoginViewModel, FragmentLoginBin
         viewModel.getUsername().observe(getViewLifecycleOwner(), s -> {
             if (isLegit(s)) {
                 loginButton.setEnabled(true);
-                usernameEditLayout.setError(null);
+                emailEditLayout.setError(null);
             } else {
-                usernameEditLayout.setError("Username không hợp lệ");
+                emailEditLayout.setError("Hãy nhập đúng định dạng email");
                 loginButton.setEnabled(false);
             }
 
         });
         viewModel.getPassword().observe(getViewLifecycleOwner(), s -> {
-            if (s.length() > 6) {
+            if (isLegitP(s)) {
                 loginButton.setEnabled(true);
                 passwordEditLayout.setError(null);
             } else {
-                passwordEditLayout.setError("Mật khẩu không hợp lệ");
+                passwordEditLayout.setError("Mật khẩu phải lớn hơn 6 kí tự");
                 loginButton.setEnabled(false);
             }
 
@@ -101,25 +102,32 @@ public class LoginFragment extends BaseFragment<LoginViewModel, FragmentLoginBin
     }
 
     private boolean isLegit(String username) {
-        return username.length() > 8;
+        return Patterns.EMAIL_ADDRESS.matcher(username).matches();
+    }
+
+    private boolean isLegitP(String password) {
+        return password.length() > 6;
     }
 
     private void onLoginPress() {
-        String username = binding.signInUsernameEditText.getText().toString();
+        String email = binding.signInEmailEditText.getText().toString();
         String password = binding.signInPasswordEditText.getText().toString();
-        if (isLegit(username) && isLegit(password)) {
+        if (isLegit(email) && isLegitP(password)) {
             binding.loading.setVisibility(View.VISIBLE);
-            viewModel.login(username, password, new OnCompleted<User>() {
+            viewModel.login(email, password, new OnCompleted<String>() {
                 @Override
-                public void onFinish(User object) {
+                public void onFinish(String object) {
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    getActivity().startActivity(intent);
+                    getActivity().finish();
 
+                    binding.loading.setVisibility(View.GONE);
                 }
 
                 @Override
                 public void onError(String error) {
                     OnCompleted.super.onError(error);
                     GlobalUtil.makeToast(getContext(), error);
-
                 }
             });
 
@@ -127,21 +135,9 @@ public class LoginFragment extends BaseFragment<LoginViewModel, FragmentLoginBin
         } else
             showLoginFailed("Hãy nhập đúng định dạng email và mật khẩu");
 
-        Intent intent = new Intent(getActivity(), MainActivity.class);
-
-        final Handler handler = new Handler(Looper.getMainLooper());
-        handler.postDelayed(() -> {
-            getActivity().startActivity(intent);
-            getActivity().finish();
-        }, 3000);
-
-        if (binding.checkBox.isChecked()){
-            SharedPreferences.Editor editor = getActivity().getSharedPreferences("key", Context.MODE_PRIVATE).edit();
-            editor.putBoolean("isLogin", true);
-            editor.apply();
-        }
-        binding.loading.setVisibility(View.GONE);
     }
+
+
 
     private void showLoginFailed(String errorString) {
         binding.loading.setVisibility(View.GONE);

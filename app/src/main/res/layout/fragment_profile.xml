@@ -9,7 +9,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="@dimen/normalPadding">
+            android:background="@color/lighter_grey">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -18,280 +18,268 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="@dimen/padding_setting"
-                    android:paddingVertical="@dimen/smallPadding">
+                    android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/profile_image"
+                        android:id="@+id/background_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="155dp"
+                        android:scaleType="center"
+                        android:src="@drawable/header_image" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/profile_image_card"
+                        android:layout_centerHorizontal="true"
                         android:layout_width="95dp"
                         android:layout_height="95dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:adjustViewBounds="true"
-                        android:background="@drawable/ic_user" />
+                        android:layout_marginTop="60dp"
+                        app:cardBackgroundColor="@color/transparent"
+                        app:cardCornerRadius="75dp"
+                        app:cardElevation="20dp">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+                        <ImageView
+                            android:id="@+id/profile_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:background="@color/transparent"
+                            android:src="@drawable/ic_user" />
+                    </androidx.cardview.widget.CardView>
+
+
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/CustomCardViewStyle"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="30dp"
-                        android:orientation="vertical">
+                        android:layout_below="@+id/profile_image_card"
+                        android:layout_marginTop="-47dp"
+                        android:background="@drawable/top_rounded_corners"
+                        app:cardElevation="@dimen/smallPadding">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/svb_bariol"
-                            android:text="Phan Việt Đức"
-                            android:textColor="@color/header_text"
-                            android:textSize="30sp"
-                            android:textStyle="bold" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/svb_bariol"
-                            android:text="Giáo viên"
-                            android:textColor="@color/header_text"
-                            android:textSize="18sp" />
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/padding_setting"
+                                android:paddingTop="57dp"
+                                android:paddingBottom="@dimen/smallPadding">
 
-                    </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_gravity="center"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/svb_bariol"
+                                        android:text="Phan Việt Đức"
+                                        android:textColor="@color/header_text"
+                                        android:textSize="30sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/svb_bariol"
+                                        android:text="Giáo viên"
+                                        android:textColor="@color/header_text"
+                                        android:textSize="18sp" />
+
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/padding_setting">
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_margin="@dimen/smallPadding"
+                                    android:innerRadius="0dp"
+                                    android:shape="ring"
+                                    app:cardCornerRadius="75dp">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:adjustViewBounds="true"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/ic_baseline_chat_24"
+                                        app:tint="@color/setting_icon" />
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="50dp"
+                                    android:layout_marginStart="@dimen/smallPadding"
+                                    android:background="@drawable/login_button_bk"
+                                    android:backgroundTint="@color/setting_icon"
+                                    android:minHeight="50dp"
+                                    android:text="Yêu thích"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="75dp"
+                                android:layout_marginTop="@dimen/smallPadding"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".5"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="2"
+                                        android:textColor="@color/header_text"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="lớp học"
+                                        android:textColor="@color/grey" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginVertical="@dimen/smallPadding"
+                                    android:background="@color/grey" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".5"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="12"
+                                        android:textColor="@color/header_text"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="người thích"
+                                        android:textColor="@color/grey" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginVertical="@dimen/smallPadding"
+                                    android:background="@color/grey" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".5"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="12"
+                                        android:textColor="@color/header_text"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="lượt thích"
+                                        android:textColor="@color/grey" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
                 </RelativeLayout>
 
-                <LinearLayout
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="@dimen/padding_setting">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_baseline_phone_24"
-                        android:drawablePadding="15dp"
-                        android:drawableTint="@color/grey"
-                        android:text="0123456789"
-                        android:textColor="@color/header_text"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:drawableStart="@drawable/ic_baseline_email_24"
-                        android:drawablePadding="15dp"
-                        android:drawableTint="@color/grey"
-                        android:text="thuongvip159@gmail.com"
-                        android:textColor="@color/header_text"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="75dp"
                     android:layout_marginTop="@dimen/smallPadding"
-                    android:orientation="horizontal">
+                    android:background="@drawable/top_rounded_corners"
+                    app:cardElevation="@dimen/smallPadding">
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight=".5"
-                        app:cardCornerRadius="0dp"
-                        app:strokeColor="@color/grey"
-                        app:strokeWidth="0.9dp">
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/normalPadding">
+
+                        <TextView
+                            style="@style/viewParent.headerText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/activity_horizontal_margin"
+                            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                            android:fontFamily="@font/svb_bariol_regular"
+                            android:text="Các lớp học"
+                            android:textColor="@color/header_text"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:layout_marginBottom="@dimen/horizontal_card"
                             android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="150k"
-                                android:textColor="@color/header_text"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_class_owned"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="point"
-                                android:textColor="@color/grey" />
+                            <include layout="@layout/item_class_preview" />
+
+                            <include layout="@layout/item_class_preview" />
 
                         </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".5"
-                        app:cardCornerRadius="0dp"
-                        app:strokeColor="@color/grey"
-                        app:strokeWidth="0.9dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="12"
-                                android:textColor="@color/header_text"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="lớp học"
-                                android:textColor="@color/grey" />
-
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingVertical="@dimen/normalPadding">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/love_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/transparent"
-                        android:fontFamily="@font/svb_bariol"
-                        android:gravity="left|center_vertical"
-                        android:letterSpacing="0"
-                        android:paddingHorizontal="@dimen/padding_setting"
-                        android:text="Ưa thích"
-                        android:textAllCaps="false"
-                        android:textColor="@color/header_text"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:icon="@drawable/ic_heart"
-                        app:iconPadding="@dimen/padding_setting"
-                        app:iconSize="30dp"
-                        app:iconTint="@color/setting_icon" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/edit_profile_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/transparent"
-                        android:fontFamily="@font/svb_bariol"
-                        android:gravity="left|center_vertical"
-                        android:letterSpacing="0"
-                        android:paddingHorizontal="@dimen/padding_setting"
-                        android:text="Chỉnh sửa profile"
-                        android:textAllCaps="false"
-                        android:textColor="@color/header_text"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:icon="@drawable/ic_baseline_person_24"
-                        app:iconPadding="@dimen/padding_setting"
-                        app:iconSize="30dp"
-                        app:iconTint="@color/setting_icon" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/topup_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/transparent"
-                        android:fontFamily="@font/svb_bariol"
-                        android:gravity="left|center_vertical"
-                        android:letterSpacing="0"
-                        android:paddingHorizontal="@dimen/padding_setting"
-                        android:text="Nạp tiền / Rút tiền"
-                        android:textAllCaps="false"
-                        android:textColor="@color/header_text"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:icon="@drawable/ic_baseline_attach_money_24"
-                        app:iconPadding="@dimen/padding_setting"
-                        app:iconSize="30dp"
-                        app:iconTint="@color/setting_icon" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/history_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/transparent"
-                        android:fontFamily="@font/svb_bariol"
-                        android:gravity="left|center_vertical"
-                        android:letterSpacing="0"
-                        android:paddingHorizontal="@dimen/padding_setting"
-                        android:text="Lớp của tôi"
-                        android:textAllCaps="false"
-                        android:textColor="@color/header_text"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:icon="@drawable/ic_baseline_calendar_month_24"
-                        app:iconPadding="@dimen/padding_setting"
-                        app:iconSize="30dp"
-                        app:iconTint="@color/setting_icon" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/help_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/transparent"
-                        android:fontFamily="@font/svb_bariol"
-                        android:gravity="left|center_vertical"
-                        android:letterSpacing="0"
-                        android:paddingHorizontal="@dimen/padding_setting"
-                        android:text="Trợ giúp"
-                        android:textAllCaps="false"
-                        android:textColor="@color/header_text"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:icon="@drawable/ic_baseline_phone_24"
-                        app:iconPadding="@dimen/padding_setting"
-                        app:iconSize="30dp"
-                        app:iconTint="@color/setting_icon" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginHorizontal="@dimen/padding_setting"
-                        android:layout_marginTop="5dp"
-                        android:background="@color/grey" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/logout_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:background="@color/transparent"
-                        android:fontFamily="@font/svb_bariol"
-                        android:gravity="left|center_vertical"
-                        android:letterSpacing="0"
-                        android:paddingHorizontal="@dimen/padding_setting"
-                        android:text="Đăng xuất"
-                        android:textAllCaps="false"
-                        android:textColor="@color/red"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:icon="@drawable/ic_baseline_logout_24"
-                        app:iconPadding="@dimen/padding_setting"
-                        app:iconSize="30dp"
-                        app:iconTint="@color/red" />
-                </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
+
 
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

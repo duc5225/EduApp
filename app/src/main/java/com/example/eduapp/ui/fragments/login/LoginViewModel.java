@@ -46,11 +46,12 @@ public class LoginViewModel extends BaseViewModel {
     getPassword().setValue(password);
   }
 
-  public void login(String username, String password, OnCompleted<User> onCompleted) {
-    mModel.login(username, password, new OnCompleted<User>() {
+  public void login(String email, String password, OnCompleted<String> onCompleted) {
+    mModel.login(email, password, new OnCompleted<String>() {
+
       @Override
-      public void onFinish(User user) {
-        onCompleted.onFinish(user);
+      public void onFinish(String object) {
+        onCompleted.onFinish(object);
       }
 
       @Override
@@ -65,7 +66,7 @@ public class LoginViewModel extends BaseViewModel {
     if (user == null) onCompleted.onError("Hãy điền đầy đủ thông tin");
 
     else{
-      mModel.register(user, object -> onCompleted.onFinish("success"));
+      mModel.signup(user, onCompleted);
     }
   }
 }

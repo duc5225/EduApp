@@ -268,17 +268,23 @@
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/dob_button"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/profile_price_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/edit_profile_box"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/smallPadding"
-                    android:background="@drawable/round_corner"
-                    android:drawableEnd="@drawable/ic_baseline_calendar_month_24"
-                    android:gravity="center|left"
-                    android:paddingHorizontal="@dimen/smallPadding"
-                    android:text="Ngày sinh"
-                    android:textSize="16sp" />
+                    app:hintTextColor="@color/header_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/profile_price_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/edit_profile_box"
+                        android:background="@drawable/round_corner"
+                        android:hint="Giá tiền"
+                        android:inputType="number"
+                        app:hintTextColor="@color/header_text" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/change_pwd_btn"

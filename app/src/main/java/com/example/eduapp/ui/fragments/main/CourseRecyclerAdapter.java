@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.example.eduapp.base.itf.DashboardSubjectItemClickListener;
 import com.example.eduapp.databinding.ItemSubjectBinding;
-import com.example.eduapp.model.SubjectCard;
+import com.example.eduapp.model.Subject;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +18,10 @@ import java.util.List;
 public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAdapter._ViewHolder> {
 
   Context mContext;
-  private List<SubjectCard> mData;
+  private List<Subject> mData;
   private DashboardSubjectItemClickListener coursesDashboardSubjectItemClickListener;
 
-  public CourseRecyclerAdapter(Context mContext, List<SubjectCard> mData, DashboardSubjectItemClickListener listener) {
+  public CourseRecyclerAdapter(Context mContext, List<Subject> mData, DashboardSubjectItemClickListener listener) {
     this.mContext = mContext;
     this.mData = mData;
     this.coursesDashboardSubjectItemClickListener = listener;
@@ -69,8 +69,8 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
 
   @Override
   public long getItemId(int position) {
-    SubjectCard subjectCard = mData.get(position);
-    return subjectCard.getId();
+    Subject subject = mData.get(position);
+    return subject.getId();
   }
   @Override
   public int getItemViewType(int position) {
@@ -95,10 +95,10 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
       this.itemSubjectBinding = cardBinding;
     }
 
-    void setPostImage(SubjectCard subjectCard){
-      this.itemSubjectBinding.cardViewImage.setImageResource(subjectCard.getImageSubject());
-      this.itemSubjectBinding.stagItemCourse.setText(subjectCard.getSubjectTitle());
-      this.itemSubjectBinding.stagItemQuantityCourse.setText(subjectCard.getQuantitySubject());
+    void setPostImage(Subject subject){
+      this.itemSubjectBinding.cardViewImage.setImageResource(subject.getImageSubject());
+      this.itemSubjectBinding.stagItemCourse.setText(subject.getName());
+      this.itemSubjectBinding.stagItemQuantityCourse.setText(subject.getQuantitySubject());
     }
 
   }

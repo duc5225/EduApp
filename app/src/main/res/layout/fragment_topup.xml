@@ -112,6 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/normalPadding"
                 android:layout_marginVertical="@dimen/normalPadding"
+                app:cardCornerRadius="5dp"
                 app:cardElevation="5dp">
 
                 <LinearLayout

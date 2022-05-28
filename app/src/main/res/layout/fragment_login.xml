@@ -41,7 +41,7 @@
                 android:textSize="45sp" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/sign_in_username_layout"
+                android:id="@+id/sign_in_email_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,11 +49,11 @@
                 app:hintTextColor="@color/header_text">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/sign_in_username_edit_text"
+                    android:id="@+id/sign_in_email_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:background="@drawable/round_corner"
-                    android:hint="Username"
+                    android:hint="Email"
                     android:inputType="textEmailAddress"
                     android:textColorHint="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -75,12 +75,6 @@
                     android:hint="Password"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
-
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ghi nhớ đăng nhập" />
 
 
         </LinearLayout>

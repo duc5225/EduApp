@@ -5,7 +5,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -57,6 +58,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/class_title"
                         android:shadowColor="@color/black"
+                        app:cardCornerRadius="@dimen/smallPadding"
                         app:cardElevation="@dimen/card_add_elevation"
                         app:cardUseCompatPadding="true">
 
@@ -64,7 +66,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:padding="10dp">
+                            android:padding="13dp">
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/subject_layout"
@@ -226,6 +228,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:layout_below="@id/description_text"
+                        app:cardCornerRadius="@dimen/smallPadding"
                         app:cardElevation="@dimen/card_add_elevation"
                         app:cardUseCompatPadding="true">
 
@@ -262,6 +265,7 @@
                         android:layout_height="150dp"
                         android:layout_below="@id/time_text"
                         app:cardElevation="@dimen/card_add_elevation"
+                        app:cardCornerRadius="@dimen/smallPadding"
                         app:cardUseCompatPadding="true">
 
                         <EditText

@@ -8,17 +8,12 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.eduapp.R;
 import com.example.eduapp.base.BaseViewModel;
-import com.example.eduapp.base.helpers.HorizontalMarginItemDecoration;
-import com.example.eduapp.base.itf.TopupItemClickListener;
+import com.example.eduapp.base.itf.BaseItemClickListener;
 import com.example.eduapp.base.ui.BaseDialogFragment;
 import com.example.eduapp.databinding.FragmentTopupBinding;
-import com.example.eduapp.model.MatchCourse;
-import com.example.eduapp.ui.fragments.search.CourseTopicsViewPager;
 import com.example.eduapp.ui.fragments.settings.adapter.TopupViewPager;
 
-import java.util.List;
-
-public class TopupFragment extends BaseDialogFragment<BaseViewModel, FragmentTopupBinding> implements TopupItemClickListener {
+public class TopupFragment extends BaseDialogFragment<BaseViewModel, FragmentTopupBinding> implements BaseItemClickListener {
   @Override
   public int idLayout() {
     return R.layout.fragment_topup;
@@ -61,7 +56,7 @@ public class TopupFragment extends BaseDialogFragment<BaseViewModel, FragmentTop
   }
 
   @Override
-  public void onQuestionClick() {
+  public void onItemClick() {
     showErrorMessage("Gửi đến tài khoản momo 0396854052, nội dung là mã thanh toán", null);
   }
 }

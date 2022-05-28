@@ -252,17 +252,23 @@
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/dob_button"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/sign_up_price_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/register_box_margin"
-                    android:background="@drawable/round_corner"
-                    android:gravity="center | left"
-                    android:text="Ngày sinh"
-                    android:drawableEnd="@drawable/ic_baseline_calendar_month_24"
-                    android:paddingHorizontal="@dimen/smallPadding"
-                    android:textSize="16sp" />
+                    app:hintTextColor="@color/header_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/sign_up_price_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/round_corner"
+                        android:hint="Số tiền thuê dạy"
+                        android:inputType="number"
+                        app:hintTextColor="@color/header_text" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/sign_up_btn"

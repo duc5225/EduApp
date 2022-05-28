@@ -4,16 +4,16 @@ import androidx.annotation.NonNull;
 
 import com.example.eduapp.R;
 import com.example.eduapp.base.BaseRvAdapter;
-import com.example.eduapp.base.itf.TopupItemClickListener;
+import com.example.eduapp.base.itf.BaseItemClickListener;
 import com.example.eduapp.databinding.ItemTopupBinding;
 
 import java.util.List;
 
 public class TopupViewPager extends BaseRvAdapter<ItemTopupBinding, List> {
 
-  TopupItemClickListener topupItemClickListener;
-  public TopupViewPager(TopupItemClickListener topupItemClickListener) {
-    this.topupItemClickListener = topupItemClickListener;
+  BaseItemClickListener baseItemClickListener;
+  public TopupViewPager(BaseItemClickListener baseItemClickListener) {
+    this.baseItemClickListener = baseItemClickListener;
   }
 
   @Override
@@ -32,7 +32,7 @@ public class TopupViewPager extends BaseRvAdapter<ItemTopupBinding, List> {
     else binding.topupBtn.setText("Rút");
 
     binding.question.setOnClickListener(v -> {
-      topupItemClickListener.onQuestionClick();
+      baseItemClickListener.onItemClick();
     });
   }
 }

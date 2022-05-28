@@ -18,6 +18,9 @@ public interface RetrofitConnector {
   @GET("user/{id}")
   Call<User> getUser(@Path("id") String id);
 
+  @GET("/api/tutor")
+  Call<List<User>> getAllTutor();
+
   @POST("auth/register")
   Call<User> register(@Body User user);
 

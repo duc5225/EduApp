@@ -9,20 +9,19 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.eduapp.R;
-import com.example.eduapp.base.ui.BaseFragment;
 import com.example.eduapp.base.helpers.GridSpacingItemDecoration;
 import com.example.eduapp.base.itf.DashboardSubjectItemClickListener;
+import com.example.eduapp.base.ui.BaseFragment;
 import com.example.eduapp.databinding.FragmentMainBinding;
-import com.example.eduapp.model.SubjectCard;
+import com.example.eduapp.model.Subject;
 import com.example.eduapp.ui.activity.MainActivity;
-import com.example.eduapp.ui.fragments.createclass.PickerFragment;
+import com.example.eduapp.ui.fragments.createclass.CreateClassFragment;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class MainFragment extends BaseFragment<MainViewModel, FragmentMainBinding> implements DashboardSubjectItemClickListener {
 
-  private ArrayList<SubjectCard> subjectCards;
+  private ArrayList<Subject> subjects;
   private CourseRecyclerAdapter adapter;
 
   @Override
@@ -51,15 +50,15 @@ public class MainFragment extends BaseFragment<MainViewModel, FragmentMainBindin
       ((MainActivity) getActivity()).toPager(2);
     });
     binding.searchSection.setOnClickListener(v -> {
-      Date time = new Date();
-      PickerFragment pickerFragment = new PickerFragment(time, new PickerFragment.OnDateTimeSet() {
-        @Override
-        public void onSet(Date date) {
+//      Date time = new Date();
+//      PickerFragment pickerFragment = new PickerFragment(time, new PickerFragment.OnDateTimeSet() {
+//        @Override
+//        public void onSet(Date date) {
+//
+//        }
+//      });
 
-        }
-      });
-
-      showDialogFragment(pickerFragment);
+      showDialogFragment(new CreateClassFragment());
     });
     StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 
@@ -69,16 +68,16 @@ public class MainFragment extends BaseFragment<MainViewModel, FragmentMainBindin
     int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.normalPadding);
     binding.rvSubject.addItemDecoration(new GridSpacingItemDecoration(2, spacingInPixels, false, 0));
 
-    subjectCards = new ArrayList<>();
+    subjects = new ArrayList<>();
 
-    subjectCards.add(new SubjectCard(1, R.drawable.course_design_thinking, "Toán", "19 giáo viên"));
-    subjectCards.add(new SubjectCard(2, R.drawable.course_design_coding, "Lý", "14 giáo viên"));
-    subjectCards.add(new SubjectCard(3, R.drawable.course_design_marketing, "Hoá", "24 giáo viên"));
-    subjectCards.add(new SubjectCard(4, R.drawable.course_design_securityexpert, "Văn", "18 giáo viên"));
-    subjectCards.add(new SubjectCard(5, R.drawable.course_design_whatisthisshit, "Anh", "21 giáo viên"));
-    subjectCards.add(new SubjectCard(6, R.drawable.course_coding, "CNTT", "10 giáo viên"));
+    subjects.add(new Subject(1, R.drawable.course_design_coding, "Toán", "19 giáo viên"));
+    subjects.add(new Subject(2, R.drawable.course_design_marketing, "Lý", "14 giáo viên"));
+    subjects.add(new Subject(3, R.drawable.course_design_marketing, "Hoá", "24 giáo viên"));
+    subjects.add(new Subject(4, R.drawable.course_design_securityexpert, "Văn", "18 giáo viên"));
+    subjects.add(new Subject(5, R.drawable.course_design_whatisthisshit, "Anh", "21 giáo viên"));
+    subjects.add(new Subject(6, R.drawable.course_coding, "CNTT", "10 giáo viên"));
 
-    adapter = new CourseRecyclerAdapter(getContext(), subjectCards, this);
+    adapter = new CourseRecyclerAdapter(getContext(), subjects, this);
 
 //        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.card_margin);
 //        binding.rvCourses.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
@@ -93,7 +92,7 @@ public class MainFragment extends BaseFragment<MainViewModel, FragmentMainBindin
   }
 
   @Override
-  public void onDashboardSubjectClick(SubjectCard subjectCard, ImageView imageView) {
-    Toast.makeText(getContext(), subjectCard.getSubjectTitle(), Toast.LENGTH_SHORT).show();
+  public void onDashboardSubjectClick(Subject subject, ImageView imageView) {
+    Toast.makeText(getContext(), subject.getName(), Toast.LENGTH_SHORT).show();
   }
 }

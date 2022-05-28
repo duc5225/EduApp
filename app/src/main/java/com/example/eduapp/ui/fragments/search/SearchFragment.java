@@ -5,19 +5,21 @@ import static java.lang.Math.abs;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.eduapp.R;
-import com.example.eduapp.base.ui.BaseFragment;
 import com.example.eduapp.base.helpers.HorizontalMarginItemDecoration;
+import com.example.eduapp.base.itf.BaseItemClickListener;
 import com.example.eduapp.base.itf.MatchSubjectClickListener;
+import com.example.eduapp.base.ui.BaseFragment;
 import com.example.eduapp.databinding.FragmentSearchBinding;
-import com.example.eduapp.model.MatchCourse;
+import com.example.eduapp.model.City;
 import com.example.eduapp.util.GlobalUtil;
 
 import java.util.List;
 
-public class SearchFragment extends BaseFragment<SearchViewModel, FragmentSearchBinding> implements MatchSubjectClickListener {
+public class SearchFragment extends BaseFragment<SearchViewModel, FragmentSearchBinding> implements MatchSubjectClickListener, BaseItemClickListener {
   @Override
   public int idLayout() {
     return R.layout.fragment_search;
@@ -30,10 +32,21 @@ public class SearchFragment extends BaseFragment<SearchViewModel, FragmentSearch
 
     int currentItem = 1;
     setupViewpager(currentItem, viewModel.getData());
+    setupRecyclerView();
   }
 
-  private void setupViewpager(int currentItem, List<MatchCourse> matchCourseList) {
-    CourseTopicsViewPager courseTopicsViewPager = new CourseTopicsViewPager(matchCourseList, this);
+  private void setupRecyclerView() {
+    viewModel.getAllTutors(object -> {
+      UserListAdapter adapter = new UserListAdapter(object, this);
+      LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+      binding.userList.setLayoutManager(layoutManager);
+      binding.userList.setAdapter(adapter);
+    });
+  }
+
+
+  private void setupViewpager(int currentItem, List<City> cityList) {
+    CourseTopicsViewPager courseTopicsViewPager = new CourseTopicsViewPager(cityList, this);
     binding.viewPager.setAdapter(courseTopicsViewPager);
     binding.viewPager.setCurrentItem(currentItem);
     binding.viewPager.setOffscreenPageLimit(1);
@@ -63,7 +76,12 @@ public class SearchFragment extends BaseFragment<SearchViewModel, FragmentSearch
   }
 
   @Override
-  public void onScrollPagerItemClick(MatchCourse courseCard, ImageView imageView) {
+  public void onScrollPagerItemClick(City courseCard, ImageView imageView) {
     GlobalUtil.makeToast(getContext(), courseCard.getName());
+  }
+
+  @Override
+  public void onItemClick() {
+    showDialogFragment(new ProfileFragment());
   }
 }

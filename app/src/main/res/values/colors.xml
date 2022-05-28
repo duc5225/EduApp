@@ -53,6 +53,7 @@
     <color name="black_transparent">#CC003366</color>
     <color name="red">#D32F2F</color>
     <color name="grey">#CFCFCF</color>
+    <color name="lighter_grey">#EDEDED</color>
     <color name="orange">#FE940D</color>
     <color name="green">#00FF00</color>
     <color name="dark_blue">#5d3369</color>
@@ -66,8 +67,8 @@
     <color name="option2">#A919DD</color>
     <color name="option3">#E34B4A</color>
     <color name="option4">#FF8033</color>
-    <color name="ios_btn_normal">#FFFFFF</color>
-    <color name="ios_btn_press">#FFCDCDCD</color>
+    <color name="alert_btn_normal">#FFFFFF</color>
+    <color name="alert_btn_press">#FFCDCDCD</color>
 
     <color name="colorPrimaryText">@android:color/white</color>
 </resources>

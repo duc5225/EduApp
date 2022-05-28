@@ -5,14 +5,14 @@
 package com.example.eduapp.model;
 
 
-public class MatchCourse {
+public class City {
 
     private final int id;
     private final String name;
     private final String numberOfCourses;
     private final int imageResource;
 
-    public MatchCourse(int id, String name, String numberOfCourses, int imageResource) {
+    public City(int id, String name, String numberOfCourses, int imageResource) {
         this.id = id;
         this.name = name;
         this.numberOfCourses = numberOfCourses;
@@ -21,7 +21,7 @@ public class MatchCourse {
 
     @Override
     public String toString() {
-        return "MatchCourse{" +
+        return "City{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", numberOfCourses='" + numberOfCourses + '\'' +

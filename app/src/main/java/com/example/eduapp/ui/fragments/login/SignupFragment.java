@@ -1,5 +1,6 @@
 package com.example.eduapp.ui.fragments.login;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
@@ -8,6 +9,7 @@ import com.example.eduapp.base.itf.OnCompleted;
 import com.example.eduapp.base.ui.BaseFragment;
 import com.example.eduapp.databinding.FragmentSignupBinding;
 import com.example.eduapp.model.User;
+import com.example.eduapp.ui.activity.MainActivity;
 import com.example.eduapp.util.GlobalUtil;
 
 public class SignupFragment extends BaseFragment<LoginViewModel, FragmentSignupBinding> {
@@ -23,7 +25,17 @@ public class SignupFragment extends BaseFragment<LoginViewModel, FragmentSignupB
 
     viewModel = new LoginViewModel();
 
+    binding.signUpEmailEditText.setText("ducvip5225@gmail.com");
+    binding.signUpUsernameEditText.setText("hedasxd");
+    binding.signUpPasswordEditText.setText("Hedas0612");
+    binding.signUpFirstnameEditText.setText("Phan Việt");
+    binding.signUpLastnameEditText.setText("Đức");
+    binding.signUpPhoneEditText.setText("0396854052");
+    binding.signUpAddressEditText.setText("Hà nội");
+    binding.signUpPriceEditText.setText("90000"); ;
+
     binding.signUpBtn.setOnClickListener(v -> {
+
       String email = binding.signUpEmailEditText.getText().toString();
       String username = binding.signUpUsernameEditText.getText().toString();
       String password = binding.signUpPasswordEditText.getText().toString();
@@ -31,9 +43,9 @@ public class SignupFragment extends BaseFragment<LoginViewModel, FragmentSignupB
       String lastname = binding.signUpLastnameEditText.getText().toString();
       String phone = binding.signUpPhoneEditText.getText().toString();
       String address = binding.signUpAddressEditText.getText().toString();
-      String dob = binding.dobButton.getText().toString();
+      Integer price = Integer.parseInt(binding.signUpPriceEditText.getText().toString()) ;
 
-      Integer isStudent = binding.spinnerGender.getSelectedItemPosition();
+      boolean isStudent = binding.spinnerGender.getSelectedItemPosition() == 1;
       User.Gender gender;
       switch (binding.spinnerGender.getSelectedItemPosition()) {
         case 1:
@@ -46,9 +58,23 @@ public class SignupFragment extends BaseFragment<LoginViewModel, FragmentSignupB
           gender = User.Gender.male;
       }
 
-      User user = new User(email, username, password, firstname, lastname, phone, dob, gender, address, isStudent, "");
+      User user = new User(email, username, firstname, lastname, phone, gender, address, isStudent, "", price);
 
-      viewModel.signup(user, object -> GlobalUtil.makeToast(getContext(), "Đăng ký thành công"));
+      viewModel.signup(user, new OnCompleted<String>() {
+        @Override
+        public void onFinish(String object) {
+          GlobalUtil.makeToast(SignupFragment.this.getContext(), "Đăng ký thành công");
+          Intent intent = new Intent(getActivity(), MainActivity.class);
+          getActivity().startActivity(intent);
+          getActivity().finish();
+        }
+
+        @Override
+        public void onError(String error) {
+          OnCompleted.super.onError(error);
+          GlobalUtil.makeToast(SignupFragment.this.getContext(), error);
+        }
+      });
     });
   }
 

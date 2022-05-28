@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EduApp</string>
+    <string name="app_name">Izi Connect</string>
     <string name="welcome">Welcome</string>
     <string name="register">REGISTER</string>
     <string name="login_email_hint">Email</string>
@@ -18,7 +18,7 @@
     <string name="nav_title_toggle_theme">Toggle Theme</string>
     <string name="title_topic_subject">Môn học</string>
     <string name="number_teachers">19 giáo viên</string>
-    <string name="msg_splash">EduApp</string>
+    <string name="msg_splash">Izi Connect</string>
 
     <string-array name="gender_array">
         <item>Nam</item>

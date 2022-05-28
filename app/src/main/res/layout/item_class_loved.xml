@@ -90,6 +90,6 @@
             android:layout_marginTop="@dimen/top_text_subtitle_card"
             android:layout_marginBottom="@dimen/top_text_subtitle_card"
             android:adjustViewBounds="true"
-            android:background="@drawable/ic_baseline_keyboard_arrow_right_24" />
+            android:background="@drawable/ic_heart" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

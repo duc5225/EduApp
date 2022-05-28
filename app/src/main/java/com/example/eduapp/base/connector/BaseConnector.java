@@ -3,6 +3,8 @@ package com.example.eduapp.base.connector;
 import com.example.eduapp.base.itf.OnCompleted;
 import com.example.eduapp.base.itf.RetrofitConnector;
 import com.example.eduapp.model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -13,29 +15,15 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BaseConnector {
-  private final String baseUrl = "https://www.youtube.com/";
+  public FirebaseAuth mAuth;
+  public FirebaseDatabase mDatabase;
+  private final String baseUrl = "https://eduapp-f8af5-default-rtdb.asia-southeast1.firebasedatabase.app";
   protected Retrofit retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).build();
   protected RetrofitConnector retrofitConnector = retrofit.create(RetrofitConnector.class);
 
-  public void getAllUsers(OnCompleted<List<User>> onCompleted) {
-    Call<List<User>> getAllUser = retrofitConnector.getAllUser();
-    handleRequest(getAllUser, onCompleted);
-  }
-
-  public void getUser(String id, OnCompleted<User> onCompleted) {
-    Call<User> getUser = retrofitConnector.getUser(id);
-    handleRequest(getUser, onCompleted);
-  }
-
-  public void register(User user, OnCompleted<User> onCompleted) {
-    Call<User> register = retrofitConnector.register(user);
-    handleRequest(register, onCompleted);
-  }
-
-  public void login(String username, String password, OnCompleted<User> onCompleted) {
-    User user = new User(username, password);
-    Call<User> login = retrofitConnector.login(user);
-    handleRequest(login, onCompleted);
+  protected BaseConnector(){
+    mAuth = FirebaseAuth.getInstance();
+    mDatabase = FirebaseDatabase.getInstance(baseUrl);
   }
 
   private void handleRequest(Call call, OnCompleted onCompleted) {

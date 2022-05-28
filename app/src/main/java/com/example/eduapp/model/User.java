@@ -24,9 +24,6 @@ public class User {
     @SerializedName("phone")
     @Expose
     private String phone;
-    @SerializedName("dob")
-    @Expose
-    private Object dob;
     @SerializedName("gender")
     @Expose
     private Gender gender;
@@ -41,19 +38,22 @@ public class User {
     private String province;
     @SerializedName("bpoint")
     @Expose
-    private Double bpoint;
+    private Double token;
     @SerializedName("isStudent")
     @Expose
-    private Integer isStudent;
-    @SerializedName("createdAt")
-    @Expose
-    private Object createdAt;
+    private boolean isStudent;
     @SerializedName("classList")
     @Expose
     private List<Class> classList = null;
     @SerializedName("IDCartImage")
     @Expose
-    private String iDCartImage;
+    private String imgUrl;
+    @SerializedName("price")
+    @Expose
+    private Integer price;
+    @SerializedName("subjectList")
+    @Expose
+    private List<String> subjectList = null;
 
     public User(String username, String password) {
         this.userName = username;
@@ -70,53 +70,47 @@ public class User {
     public User() {
     }
 
-    public User(String email, String userName, String password, String firstName, String lastName, String phone, Object dob, Gender gender, String address, Integer isStudent, String iDCartImage) {
+    public User(String email, String userName, String password, String firstName, String lastName, String phone, Gender gender, String address, boolean isStudent, String imgUrl, Integer price) {
         this.email = email;
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
-        this.dob = dob;
         this.gender = gender;
         this.address = address;
         this.isStudent = isStudent;
-        this.iDCartImage = iDCartImage;
+        this.imgUrl = imgUrl;
+        this.price = price;
     }
-
-    /**
-     * 
-     * @param lastName
-     * @param address
-     * @param gender
-     * @param userName
-     * @param firstName
-     * @param createdAt
-     * @param province
-     * @param dob
-     * @param district
-     * @param bpoint
-     * @param email
-     * @param isStudent
-     * @param classList
-     */
-    public User(String email, String userName, String password, String firstName, String lastName, Object dob, Gender gender, String address, String district, String province, Double bpoint, Integer isStudent, Object createdAt, List<Class> classList, String iDCartImage) {
-        super();
+    public User(String email, String userName, String firstName, String lastName, String phone, Gender gender, String address, boolean isStudent, String imgUrl, Integer price) {
         this.email = email;
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dob = dob;
+        this.phone = phone;
+        this.gender = gender;
+        this.address = address;
+        this.isStudent = isStudent;
+        this.imgUrl = imgUrl;
+        this.price = price;
+    }
+
+    public User(String email, String userName, String password, String firstName, String lastName, Gender gender, String address, String district, String province, Double token, boolean isStudent, Object createdAt, List<Class> classList, String imgUrl) {
+        super();
+        this.email = email;
+        this.userName = userName;
+        this.password = password;
+        this.firstName = firstName;
         this.gender = gender;
         this.address = address;
         this.district = district;
         this.province = province;
-        this.bpoint = bpoint;
+        this.token = token;
         this.isStudent = isStudent;
-        this.createdAt = createdAt;
         this.classList = classList;
-        this.iDCartImage = iDCartImage;
+        this.imgUrl = imgUrl;
     }
 
     public String getPassword() {
@@ -127,12 +121,12 @@ public class User {
         this.password = password;
     }
 
-    public String getiDCartImage() {
-        return iDCartImage;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setiDCartImage(String iDCartImage) {
-        this.iDCartImage = iDCartImage;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public String getEmail() {
@@ -159,23 +153,7 @@ public class User {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Object getDob() {
-        return dob;
-    }
-
-    public void setDob(Object dob) {
-        this.dob = dob;
-    }
-
-    public Object getGender() {
+    public Gender getGender() {
         return gender;
     }
 
@@ -207,28 +185,20 @@ public class User {
         this.province = province;
     }
 
-    public Double getBpoint() {
-        return bpoint;
+    public Double getToken() {
+        return token;
     }
 
-    public void setBpoint(Double bpoint) {
-        this.bpoint = bpoint;
+    public void setToken(Double token) {
+        this.token = token;
     }
 
-    public Integer getIsStudent() {
+    public boolean isStudent() {
         return isStudent;
     }
 
-    public void setIsStudent(Integer isStudent) {
+    public void setStudent(boolean isStudent) {
         this.isStudent = isStudent;
-    }
-
-    public Object getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Object createdAt) {
-        this.createdAt = createdAt;
     }
 
     public List<Class> getClassList() {
@@ -239,4 +209,35 @@ public class User {
         this.classList = classList;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public List<String> getSubjectList() {
+        return subjectList;
+    }
+
+    public void setSubjectList(List<String> subjectList) {
+        this.subjectList = subjectList;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }

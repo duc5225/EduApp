@@ -2,9 +2,9 @@ package com.example.eduapp.base.itf;
 
 import android.widget.ImageView;
 
-import com.example.eduapp.model.SubjectCard;
+import com.example.eduapp.model.Subject;
 
 public interface DashboardSubjectItemClickListener {
 
-  void onDashboardSubjectClick(SubjectCard subjectCard, ImageView imageView);
+  void onDashboardSubjectClick(Subject subject, ImageView imageView);
 }
