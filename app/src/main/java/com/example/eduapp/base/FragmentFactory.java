@@ -12,6 +12,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.eduapp.base.ui.SpinnerDialog;
+
 public class FragmentFactory {
   public static void showKeyboard(FragmentActivity activity, View v) {
     if (activity == null || v == null) return;
@@ -79,5 +81,38 @@ public class FragmentFactory {
         .setNegativeButton("Hủy", null)
         .setCancelable(true)
         .show();
+  }
+
+  public static synchronized void showLoadingDialog(FragmentActivity activity) {
+    if (activity == null || activity.isDestroyed() || activity.isFinishing()) return;
+    FragmentManager fm = activity.getSupportFragmentManager();
+    FragmentTransaction transaction = fm.beginTransaction();
+    Fragment oldFragment = fm.findFragmentByTag(SpinnerDialog.class.getCanonicalName());
+    if (oldFragment != null) {
+      transaction.remove(oldFragment);
+    }
+    final SpinnerDialog progressDialogFragment = new SpinnerDialog();
+    transaction.add(progressDialogFragment, SpinnerDialog.class.getCanonicalName());
+    transaction.commitAllowingStateLoss();
+    try {
+      fm.executePendingTransactions();
+    }catch (Exception e) {
+
+    }
+  }
+  public static synchronized void hideLoadingDialog(FragmentActivity activity) {
+    if (activity == null || activity.isDestroyed() || activity.isFinishing()) return;
+    FragmentManager fm = activity.getSupportFragmentManager();
+    FragmentTransaction transaction = fm.beginTransaction();
+    Fragment oldFragment = fm.findFragmentByTag(SpinnerDialog.class.getCanonicalName());
+    if (oldFragment != null) {
+      transaction.remove(oldFragment);
+      transaction.commitAllowingStateLoss();
+      try {
+        fm.executePendingTransactions();
+      }catch (Exception e) {
+
+      }
+    }
   }
 }

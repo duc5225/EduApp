@@ -5,12 +5,13 @@
 package com.example.eduapp.model;
 
 public class Subject {
-
     private int Id;
     private int imageSubject;
     private String name;
     private String quantitySubject;
-    private String urlSubject;
+
+    public Subject() {
+    }
 
     public Subject(int id, int imageSubject, String name, String quantitySubject) {
         Id = id;
@@ -55,14 +56,6 @@ public class Subject {
 
     public void setQuantitySubject(String quantitySubject) {
         this.quantitySubject = quantitySubject;
-    }
-
-    public String getUrlSubject() {
-        return urlSubject;
-    }
-
-    public void setUrlSubject(String urlSubject) {
-        this.urlSubject = urlSubject;
     }
 
     @Override()

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/smallVerticalItemMargin"
+        android:layout_marginHorizontal="5dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingVertical="@dimen/smallPadding">
+
+            <ImageView
+                android:id="@+id/type_image"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/top_text_subtitle_card"
+                android:layout_marginEnd="@dimen/top_text_subtitle_card"
+                android:layout_marginBottom="@dimen/top_text_subtitle_card"
+                android:layout_marginStart="@dimen/smallPadding"
+                android:layout_weight=".06"
+                android:adjustViewBounds="true" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/nav_header_vertical_spacing"
+                android:layout_weight=".99"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/transaction_title"
+                    style="@style/viewParent.headerText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/svb_bariol_regular"
+                    android:text="Nạp"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/payment_method"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp"
+                    android:fontFamily="@font/bariol_regular"
+                    android:text="Momo"
+                    android:textColor="@color/bottomNavigationTextColor" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bariol_regular"
+                    android:id="@+id/amount"
+                    android:text="90.000đ"
+                    android:textColor="@color/orange"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

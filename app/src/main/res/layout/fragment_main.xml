@@ -41,6 +41,7 @@
                     </TextView>
 
                     <TextView
+                        android:id="@+id/guide_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ấn để tạo lớp học theo ý muốn"/>

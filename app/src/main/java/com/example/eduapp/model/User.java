@@ -2,10 +2,13 @@
 package com.example.eduapp.model;
 
 import java.util.List;
+import java.util.Map;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class User {
+    private String id;
     @SerializedName("email")
     @Expose
     private String email;
@@ -32,10 +35,7 @@ public class User {
     private String address;
     @SerializedName("district")
     @Expose
-    private String district;
-    @SerializedName("province")
-    @Expose
-    private String province;
+    private String cityId;
     @SerializedName("bpoint")
     @Expose
     private Double token;
@@ -55,6 +55,16 @@ public class User {
     @Expose
     private List<String> subjectList = null;
 
+    private List<Notification> notifications = null;
+
+    private Map<String, Boolean> loveUserList = null;
+
+    private Map<String, Boolean> loveClassList = null;
+
+    private List<Transaction> transactions = null;
+
+    private int reputation;
+
     public User(String username, String password) {
         this.userName = username;
         this.password = password;
@@ -70,7 +80,7 @@ public class User {
     public User() {
     }
 
-    public User(String email, String userName, String password, String firstName, String lastName, String phone, Gender gender, String address, boolean isStudent, String imgUrl, Integer price) {
+    public User(String email, String userName, String password, String firstName, String lastName, String phone, Gender gender, String address, String cityId, boolean isStudent, String imgUrl, Integer price, Integer reputation, List<String> subjectList) {
         this.email = email;
         this.userName = userName;
         this.password = password;
@@ -79,39 +89,28 @@ public class User {
         this.phone = phone;
         this.gender = gender;
         this.address = address;
+        this.cityId = cityId;
         this.isStudent = isStudent;
         this.imgUrl = imgUrl;
         this.price = price;
+        this.reputation = reputation;
+        this.subjectList = subjectList;
     }
-    public User(String email, String userName, String firstName, String lastName, String phone, Gender gender, String address, boolean isStudent, String imgUrl, Integer price) {
+    public User(String email, String userName, String firstName, String lastName, String phone, Gender gender, String address, String cityId, boolean isStudent, String imgUrl, Integer price, List<String> subjectList) {
         this.email = email;
         this.userName = userName;
-        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
         this.gender = gender;
         this.address = address;
+        this.cityId = cityId;
         this.isStudent = isStudent;
         this.imgUrl = imgUrl;
         this.price = price;
+        this.subjectList = subjectList;
     }
 
-    public User(String email, String userName, String password, String firstName, String lastName, Gender gender, String address, String district, String province, Double token, boolean isStudent, Object createdAt, List<Class> classList, String imgUrl) {
-        super();
-        this.email = email;
-        this.userName = userName;
-        this.password = password;
-        this.firstName = firstName;
-        this.gender = gender;
-        this.address = address;
-        this.district = district;
-        this.province = province;
-        this.token = token;
-        this.isStudent = isStudent;
-        this.classList = classList;
-        this.imgUrl = imgUrl;
-    }
 
     public String getPassword() {
         return password;
@@ -169,20 +168,12 @@ public class User {
         this.address = address;
     }
 
-    public String getDistrict() {
-        return district;
+    public String getCityId() {
+        return cityId;
     }
 
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
     }
 
     public Double getToken() {
@@ -240,4 +231,53 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public int getReputation() {
+        return reputation;
+    }
+
+    public void setReputation(int reputation) {
+        this.reputation = reputation;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public List<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
+    }
+
+    public Map<String, Boolean> getLoveUserList() {
+        return loveUserList;
+    }
+
+    public void setLoveUserList(Map<String, Boolean> loveUserList) {
+        this.loveUserList = loveUserList;
+    }
+
+    public Map<String, Boolean> getLoveClassList() {
+        return loveClassList;
+    }
+
+    public void setLoveClassList(Map<String, Boolean> loveClassList) {
+        this.loveClassList = loveClassList;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
 }

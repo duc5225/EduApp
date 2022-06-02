@@ -43,13 +43,14 @@
                     <EditText
                         android:id="@+id/class_title"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_below="@+id/title"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/round_corner"
                         android:hint="Tên lớp học"
+                        android:padding="15dp"
                         android:paddingHorizontal="80dp" />
 
                     <androidx.cardview.widget.CardView
@@ -68,22 +69,28 @@
                             android:orientation="vertical"
                             android:padding="13dp">
 
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/subject_layout"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:startIconDrawable="@drawable/ic_baseline_library_books_24">
 
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/subject_edit"
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/round_corner"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="12dp"
+                                    android:src="@drawable/ic_baseline_library_books_24" />
+
+                                <Spinner
+                                    android:id="@+id/spinner_subject"
                                     android:layout_width="match_parent"
-                                    android:layout_height="60dp"
-                                    android:background="@drawable/round_corner"
-                                    android:hint="Môn học"
-                                    android:inputType="textEmailAddress"
-                                    android:textColorHint="@color/white" />
-                            </com.google.android.material.textfield.TextInputLayout>
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="8dp" />
+                            </LinearLayout>
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/topic_layout"
@@ -98,7 +105,7 @@
                                     android:layout_height="60dp"
                                     android:background="@drawable/round_corner"
                                     android:hint="Chủ đề"
-                                    android:inputType="textEmailAddress"
+                                    android:inputType="text"
                                     android:textColorHint="@color/white" />
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -114,28 +121,37 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    app:endIconDrawable="@drawable/ic_baseline_add_24"
                                     app:endIconMode="custom"
                                     app:startIconDrawable="@drawable/ic_baseline_access_time_24">
 
                                     <com.google.android.material.textfield.TextInputEditText
-                                        android:id="@+id/time_edit"
+                                        android:id="@+id/length_edit"
                                         android:layout_width="match_parent"
                                         android:layout_height="60dp"
                                         android:background="@drawable/round_corner"
-                                        android:hint="Thời gian"
-                                        android:inputType="textEmailAddress"
+                                        android:hint="Thời gian (phút)"
+                                        android:inputType="number"
                                         android:textColorHint="@color/white" />
 
 
                                 </com.google.android.material.textfield.TextInputLayout>
 
                                 <ImageButton
+                                    android:id="@+id/plus"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="40dp"
+                                    android:layout_height="60dp"
+                                    android:background="@drawable/round_corner"
+                                    android:src="@drawable/ic_baseline_add_24" />
+
+                                <ImageButton
+                                    android:id="@+id/minus"
                                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                     android:layout_width="40dp"
                                     android:layout_height="60dp"
                                     android:background="@drawable/round_corner"
                                     android:src="@drawable/ic_baseline_remove_24" />
+
                             </LinearLayout>
 
 
@@ -152,7 +168,7 @@
                                     android:layout_height="60dp"
                                     android:background="@drawable/round_corner"
                                     android:hint="Địa chỉ"
-                                    android:inputType="textEmailAddress"
+                                    android:inputType="text"
                                     android:textColorHint="@color/white" />
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -169,11 +185,53 @@
                                     android:layout_height="60dp"
                                     android:background="@drawable/round_corner"
                                     android:hint="Điện thoại"
-                                    android:inputType="textEmailAddress"
+                                    android:inputType="phone"
+                                    android:textColorHint="@color/white" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/round_corner"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="12dp"
+                                    android:src="@drawable/ic_baseline_location_city_24" />
+
+                                <Spinner
+                                    android:id="@+id/spinner_city"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="8dp" />
+                            </LinearLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/price_layout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:startIconDrawable="@drawable/ic_baseline_attach_money_24">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/price_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="60dp"
+                                    android:background="@drawable/round_corner"
+                                    android:hint="Giá tiền (token / 1h)"
+                                    android:inputType="number"
                                     android:textColorHint="@color/white" />
                             </com.google.android.material.textfield.TextInputLayout>
 
                             <RadioGroup
+                                android:id="@+id/radio"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
@@ -191,12 +249,14 @@
                                     android:textStyle="bold" />
 
                                 <RadioButton
+                                    android:id="@+id/online"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/smallPadding"
                                     android:text="Online" />
 
                                 <RadioButton
+                                    android:id="@+id/offline"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/smallPadding"
@@ -233,6 +293,7 @@
                         app:cardUseCompatPadding="true">
 
                         <EditText
+                            android:id="@+id/description_edit"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
@@ -269,6 +330,7 @@
                         app:cardUseCompatPadding="true">
 
                         <EditText
+                            android:id="@+id/time_edit"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
@@ -288,11 +350,10 @@
 
         </androidx.core.widget.NestedScrollView>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="@dimen/smallPadding"
-            android:background="@drawable/top_rounded_corners"
+            app:cardElevation="@dimen/normalPadding"
             android:layout_alignParentBottom="true">
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -314,10 +375,10 @@
                      />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/sign_up_btn"
-                    android:layout_alignParentEnd="true"
+                    android:id="@+id/post_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
+                    android:layout_alignParentEnd="true"
                     android:background="@drawable/round_corner"
                     android:backgroundTint="@color/background_blue"
                     android:paddingHorizontal="@dimen/smallPadding"
@@ -325,7 +386,7 @@
                     android:textColor="@color/header_text"
                     android:textSize="15sp" />
             </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
     </RelativeLayout>
 </layout>

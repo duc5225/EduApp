@@ -2,20 +2,25 @@ package com.example.eduapp.ui.fragments.search;
 
 import androidx.annotation.NonNull;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.eduapp.R;
 import com.example.eduapp.base.BaseRvAdapter;
 import com.example.eduapp.base.itf.BaseItemClickListener;
 import com.example.eduapp.databinding.ItemPopularTeacherBinding;
 import com.example.eduapp.model.User;
+import com.example.eduapp.util.GlobalUtil;
 
 import java.util.List;
 
-public class UserListAdapter extends BaseRvAdapter<ItemPopularTeacherBinding, List<User>> {
-  BaseItemClickListener baseItemClickListener;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
-  UserListAdapter(List<User> tutorList, BaseItemClickListener onItemClickListener) {
+public class UserListAdapter extends BaseRvAdapter<ItemPopularTeacherBinding, List<User>> {
+  OnUserItemClick onUserItemClick;
+
+  public UserListAdapter(List<User> tutorList, OnUserItemClick onUserItemClick) {
     data = tutorList;
-    this.baseItemClickListener = onItemClickListener;
+    this.onUserItemClick = onUserItemClick;
   }
 
   @Override
@@ -30,10 +35,15 @@ public class UserListAdapter extends BaseRvAdapter<ItemPopularTeacherBinding, Li
 
   @Override
   public void onBind(@NonNull MViewHolder holder, int position) {
-    holder.itemView.setOnClickListener(v -> baseItemClickListener.onItemClick());
-    User item = data.get(position);
-    binding.name.setText(item.getFirstName() + " " + item.getLastName());
-    binding.subject.setText(item.getUserName());
-    binding.price.setText(item.getImgUrl() + "đ / 1h");
+    User user = data.get(position);
+    holder.itemView.setOnClickListener(v -> onUserItemClick.onItemClick(user));
+    binding.name.setText(user.getFirstName() + " " + user.getLastName());
+    binding.subject.setText(GlobalUtil.convertSubject(user.getSubjectList()));
+    binding.price.setText((user.getPrice() * 1000) + "đ / 1h");
+
+    Glide.with(mContext)
+        .load(user.getImgUrl())
+        .circleCrop()
+        .into(binding.profileImage);
   }
 }

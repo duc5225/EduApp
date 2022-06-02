@@ -45,4 +45,5 @@
     <dimen name="viewpager_current_item_horizontal_margin_testing">60dp</dimen>
     <dimen name="edit_profile_box">50dp</dimen>
     <dimen name="card_add_elevation">5dp</dimen>
+    <dimen name="class_tv_margin_top">10dp</dimen>
 </resources>

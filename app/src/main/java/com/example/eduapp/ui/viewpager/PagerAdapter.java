@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.eduapp.ui.fragments.chat.ChatFragment;
 import com.example.eduapp.ui.fragments.history.HistoryFragment;
 import com.example.eduapp.ui.fragments.notification.NotiFragment;
 import com.example.eduapp.ui.fragments.search.SearchFragment;

@@ -215,6 +215,22 @@
                         app:hintTextColor="@color/header_text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="@dimen/register_box_margin"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/round_corner">
+
+                    <Spinner
+                        android:layout_marginStart="@dimen/smallPadding"
+                        android:id="@+id/spinner_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -252,23 +268,128 @@
 
                 </LinearLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/sign_up_price_layout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/register_box_margin"
-                    app:hintTextColor="@color/header_text">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/sign_up_price_edit_text"
+                <LinearLayout
+                    android:id="@+id/for_tutor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/sign_up_price_layout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:background="@drawable/round_corner"
-                        android:hint="Số tiền thuê dạy"
-                        android:inputType="number"
-                        app:hintTextColor="@color/header_text" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/register_box_margin"
+                        app:hintTextColor="@color/header_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/sign_up_price_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:background="@drawable/round_corner"
+                            android:hint="Số tiền thuê dạy"
+                            android:inputType="number"
+                            app:hintTextColor="@color/header_text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/register_box_margin"
+                        android:layout_marginBottom="@dimen/smallPadding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svb_bariol_regular"
+                            android:gravity="center"
+                            android:text="Các môn học có thể dạy"
+                            android:textColor="@color/header_text"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="@dimen/smallPadding"
+                            android:background="@color/black"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/toan"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Toán"
+                            android:layout_weight="1"
+                            android:textColor="@color/header_text"
+                            android:fontFamily="@font/svb_bariol_regular"
+                            android:textSize="17sp"
+                            />
+                        <CheckBox
+                            android:id="@+id/van"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Văn"
+                            android:layout_weight="1"
+                            android:textColor="@color/header_text"
+                            android:fontFamily="@font/svb_bariol_regular"
+                            android:textSize="17sp"
+                            />
+                        <CheckBox
+                            android:id="@+id/eng"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Anh"
+                            android:layout_weight="1"
+                            android:textColor="@color/header_text"
+                            android:fontFamily="@font/svb_bariol_regular"
+                            android:textSize="17sp"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/ly"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Lý"
+                            android:layout_weight="1"
+                            android:textColor="@color/header_text"
+                            android:fontFamily="@font/svb_bariol_regular"
+                            android:textSize="17sp"
+                            />
+                        <CheckBox
+                            android:id="@+id/hoa"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Hoá"
+                            android:layout_weight="1"
+                            android:textColor="@color/header_text"
+                            android:fontFamily="@font/svb_bariol_regular"
+                            android:textSize="17sp"
+                            />
+                        <CheckBox
+                            android:id="@+id/cntt"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="CNTT"
+                            android:layout_weight="1"
+                            android:textColor="@color/header_text"
+                            android:fontFamily="@font/svb_bariol_regular"
+                            android:textSize="17sp"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/sign_up_btn"

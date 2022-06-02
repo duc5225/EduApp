@@ -10,16 +10,23 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.eduapp.R;
 import com.example.eduapp.base.helpers.HorizontalMarginItemDecoration;
-import com.example.eduapp.base.itf.BaseItemClickListener;
 import com.example.eduapp.base.itf.MatchSubjectClickListener;
 import com.example.eduapp.base.ui.BaseFragment;
 import com.example.eduapp.databinding.FragmentSearchBinding;
 import com.example.eduapp.model.City;
+import com.example.eduapp.model.Class;
+import com.example.eduapp.model.User;
+import com.example.eduapp.ui.fragments.classdetail.ClassFragment;
+import com.example.eduapp.ui.fragments.history.HistoryFragment;
+import com.example.eduapp.ui.fragments.history.adapter.ClassRvAdapter;
+import com.example.eduapp.ui.fragments.history.adapter.OnClassItemClick;
+import com.example.eduapp.ui.fragments.userprofile.ProfileFragment;
 import com.example.eduapp.util.GlobalUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class SearchFragment extends BaseFragment<SearchViewModel, FragmentSearchBinding> implements MatchSubjectClickListener, BaseItemClickListener {
+public class SearchFragment extends BaseFragment<SearchViewModel, FragmentSearchBinding> implements MatchSubjectClickListener, OnUserItemClick, OnClassItemClick {
   @Override
   public int idLayout() {
     return R.layout.fragment_search;
@@ -31,17 +38,49 @@ public class SearchFragment extends BaseFragment<SearchViewModel, FragmentSearch
     viewModel = new SearchViewModel();
 
     int currentItem = 1;
+    showLoadingView();
     setupViewpager(currentItem, viewModel.getData());
-    setupRecyclerView();
+    viewModel.isStudent(this::setupRecyclerView);
+
+    binding.filterBtn.setOnClickListener(v -> {
+      showDialogFragment(new FragmentFilter());
+    });
+
   }
 
-  private void setupRecyclerView() {
+  private void setupRecyclerView(Boolean isStudent) {
+    LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+    binding.userList.setLayoutManager(layoutManager);
+
+    if (isStudent)
     viewModel.getAllTutors(object -> {
       UserListAdapter adapter = new UserListAdapter(object, this);
-      LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-      binding.userList.setLayoutManager(layoutManager);
       binding.userList.setAdapter(adapter);
+      binding.tvFindTitle.setText("Tìm kiếm giáo viên phù hợp");
+      binding.numberTeachers.setText(object.size() + " giáo viên đang tìm kiếm học sinh");
+      binding.rvTitle.setText("Các giáo viên nổi tiếng");
+      hideLoadingView();
     });
+
+    else {
+      binding.tvFindTitle.setText("Tìm kiếm lớp học phù hợp");
+      binding.rvTitle.setText("Các lớp học gần đây");
+      viewModel.getAllClass(object -> {
+        binding.numberTeachers.setText(object.size() + " lớp học đang chờ bạn nhận");
+        List<String> usernameList = new ArrayList<>();
+        for (Class aClass : object) {
+          viewModel.getUserData(aClass.getUserId(), user -> {
+            if(user == null) user = new User();
+            usernameList.add(user.getFirstName() + " " + user.getLastName());
+            if (object.size() == usernameList.size()){
+              ClassRvAdapter adapter = new ClassRvAdapter(object, usernameList, viewModel, SearchFragment.this);
+              binding.userList.setAdapter(adapter);
+            }
+          });
+        }
+        hideLoadingView();
+      });
+    }
   }
 
 
@@ -81,7 +120,12 @@ public class SearchFragment extends BaseFragment<SearchViewModel, FragmentSearch
   }
 
   @Override
-  public void onItemClick() {
-    showDialogFragment(new ProfileFragment());
+  public void onItemClick(User user) {
+    showDialogFragment(new ProfileFragment(user));
+  }
+
+  @Override
+  public void onItemClick(Class aClass, User user) {
+    showDialogFragment(new ClassFragment(aClass, user));
   }
 }

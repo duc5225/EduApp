@@ -22,6 +22,8 @@ public class LoginConnector extends BaseConnector {
         .addOnCompleteListener(task -> {
           if (task.isSuccessful()) {
 
+            user.setPassword(null);
+            user.setId(mAuth.getCurrentUser().getUid());
             mDatabase.getReference("Users")
             .child(mAuth.getCurrentUser().getUid())
             .setValue(user).addOnCompleteListener(task1 -> {

@@ -192,4 +192,14 @@ public abstract class BaseDialogFragment<T extends BaseViewModel, Y extends View
   public void showErrorMessage(String message, DialogInterface.OnDismissListener onDismissListener) {
     FragmentFactory.showErrorMessage(getActivity(), message, onDismissListener);
   }
+
+  @Override
+  public void showLoadingView() {
+    FragmentFactory.showLoadingDialog(getActivity());
+  }
+
+  @Override
+  public void hideLoadingView() {
+    FragmentFactory.hideLoadingDialog(getActivity());
+  }
 }

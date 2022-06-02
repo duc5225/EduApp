@@ -91,4 +91,14 @@ public abstract class BaseFragment<T extends BaseViewModel, Y extends ViewDataBi
   public void showErrorMessage(String message, DialogInterface.OnDismissListener onDismissListener) {
     FragmentFactory.showErrorMessage(getActivity(), message, onDismissListener);
   }
+
+  @Override
+  public void showLoadingView() {
+//    FragmentFactory.showLoadingDialog(getActivity());
+  }
+
+  @Override
+  public void hideLoadingView() {
+//    FragmentFactory.hideLoadingDialog(getActivity());
+  }
 }

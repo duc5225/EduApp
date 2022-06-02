@@ -40,7 +40,7 @@
                             android:background="@drawable/round_corner">
 
                             <Spinner
-                                android:id="@+id/spinner_gender"
+                                android:id="@+id/spinner_method"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent" />
                         </RelativeLayout>
@@ -86,8 +86,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/edit_profile_box"
                             android:background="@drawable/round_corner"
-                            android:hint="Số tiền (VNĐ)"
-                            android:inputType="phone"
+                            android:hint="Số tiền (token)"
+                            android:inputType="number"
                             app:hintTextColor="@color/header_text" />
                     </com.google.android.material.textfield.TextInputLayout>
 

@@ -7,10 +7,13 @@ package com.example.eduapp.model;
 
 public class City {
 
-    private final int id;
-    private final String name;
-    private final String numberOfCourses;
-    private final int imageResource;
+    private int id;
+    private String name;
+    private String numberOfCourses;
+    private int imageResource;
+
+    public City() {
+    }
 
     public City(int id, String name, String numberOfCourses, int imageResource) {
         this.id = id;

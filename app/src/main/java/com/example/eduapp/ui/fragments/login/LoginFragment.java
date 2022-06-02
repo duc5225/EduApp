@@ -113,7 +113,7 @@ public class LoginFragment extends BaseFragment<LoginViewModel, FragmentLoginBin
         String email = binding.signInEmailEditText.getText().toString();
         String password = binding.signInPasswordEditText.getText().toString();
         if (isLegit(email) && isLegitP(password)) {
-            binding.loading.setVisibility(View.VISIBLE);
+            showLoadingView();
             viewModel.login(email, password, new OnCompleted<String>() {
                 @Override
                 public void onFinish(String object) {
@@ -121,19 +121,21 @@ public class LoginFragment extends BaseFragment<LoginViewModel, FragmentLoginBin
                     getActivity().startActivity(intent);
                     getActivity().finish();
 
-                    binding.loading.setVisibility(View.GONE);
+                    hideLoadingView();
                 }
 
                 @Override
                 public void onError(String error) {
                     OnCompleted.super.onError(error);
-                    GlobalUtil.makeToast(getContext(), error);
+                    hideLoadingView();
+                    showErrorMessage(error, null);
                 }
             });
 
 
-        } else
+        } else {
             showLoginFailed("Hãy nhập đúng định dạng email và mật khẩu");
+        }
 
     }
 

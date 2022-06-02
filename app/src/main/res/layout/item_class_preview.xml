@@ -1,95 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:elevation="5dp"
-    android:layout_marginTop="@dimen/smallPadding"
-    android:layout_margin="5dp"
-    android:outlineAmbientShadowColor="@color/black"
-    app:cardCornerRadius="@dimen/smallPadding">
-    <LinearLayout
+<layout>
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingHorizontal="5dp"
-        android:paddingVertical="@dimen/smallPadding">
-
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:elevation="5dp"
+        android:layout_marginTop="@dimen/smallPadding"
+        android:layout_margin="5dp"
+        android:outlineAmbientShadowColor="@color/black"
+        app:cardCornerRadius="@dimen/smallPadding">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/nav_header_vertical_spacing"
-            android:layout_weight=".99"
-            android:orientation="vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="@dimen/smallPadding">
 
-            <TextView
-                style="@style/viewParent.headerText"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_library_books_24"
-                android:drawablePadding="@dimen/drawable_left"
-                android:drawableTint="@color/background_blue"
-                android:fontFamily="@font/svb_bariol_regular"
-                android:text="Lớp học dạy Tiếng Anh của thầy Phan Việt Đức"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:textSize="20sp" />
+                android:layout_marginStart="@dimen/nav_header_vertical_spacing"
+                android:layout_weight=".99"
+                android:orientation="vertical">
 
-            <TextView
-                style="@style/viewParent.headerText.miniHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_person_24"
-                android:drawablePadding="@dimen/drawable_left"
-                android:drawableTint="@color/background_blue"
-                android:fontFamily="@font/svb_bariol_regular"
-                android:text="Phan Việt Đức"
-                android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/class_title"
+                    style="@style/viewParent.headerText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_library_books_24"
+                    android:drawablePadding="@dimen/drawable_left"
+                    android:drawableTint="@color/background_blue"
+                    android:fontFamily="@font/svb_bariol_regular"
+                    android:text="Lớp học dạy Tiếng Anh của thầy Phan Việt Đức"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textSize="20sp" />
 
-            <TextView
-                style="@style/viewParent.headerText.miniHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_house_24"
-                android:drawablePadding="@dimen/drawable_left"
-                android:drawableTint="@color/background_blue"
-                android:fontFamily="@font/svb_bariol_regular"
-                android:text="Phạm Văn Đồng - Cầu Giấy - Hà Nội"
-                android:ellipsize="end"
-                android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/class_creator"
+                    style="@style/viewParent.headerText.miniHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_person_24"
+                    android:drawablePadding="@dimen/drawable_left"
+                    android:drawableTint="@color/background_blue"
+                    android:fontFamily="@font/svb_bariol_regular"
+                    android:text="Phan Việt Đức"
+                    android:textSize="16sp" />
 
-            <TextView
-                style="@style/viewParent.headerText.miniHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_topic_24"
-                android:drawablePadding="@dimen/drawable_left"
-                android:drawableTint="@color/background_blue"
-                android:fontFamily="@font/bariol_regular"
-                android:text="Tiếng anh"
-                android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/class_address"
+                    style="@style/viewParent.headerText.miniHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_house_24"
+                    android:drawablePadding="@dimen/drawable_left"
+                    android:drawableTint="@color/background_blue"
+                    android:fontFamily="@font/svb_bariol_regular"
+                    android:text="Phạm Văn Đồng - Cầu Giấy - Hà Nội"
+                    android:ellipsize="end"
+                    android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_attach_money_24"
-                android:drawablePadding="@dimen/drawable_left"
-                android:drawableTint="@color/background_blue"
-                android:fontFamily="@font/bariol_bold"
-                android:gravity="center"
-                android:text="90.000đ / 1h"
-                android:textColor="@color/orange"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/class_subject"
+                    style="@style/viewParent.headerText.miniHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_topic_24"
+                    android:drawablePadding="@dimen/drawable_left"
+                    android:drawableTint="@color/background_blue"
+                    android:fontFamily="@font/bariol_regular"
+                    android:text="Tiếng anh"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/class_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_attach_money_24"
+                    android:drawablePadding="@dimen/drawable_left"
+                    android:drawableTint="@color/background_blue"
+                    android:fontFamily="@font/bariol_bold"
+                    android:gravity="center"
+                    android:text="90.000đ / 1h"
+                    android:textColor="@color/orange"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="@dimen/top_text_subtitle_card"
+                android:layout_marginBottom="@dimen/top_text_subtitle_card"
+                android:adjustViewBounds="true"
+                android:background="@drawable/ic_baseline_keyboard_arrow_right_24" />
         </LinearLayout>
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="@dimen/top_text_subtitle_card"
-            android:layout_marginBottom="@dimen/top_text_subtitle_card"
-            android:adjustViewBounds="true"
-            android:background="@drawable/ic_baseline_keyboard_arrow_right_24" />
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>
