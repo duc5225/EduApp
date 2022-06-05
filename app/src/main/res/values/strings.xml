@@ -40,6 +40,14 @@
         <item>Hải Dương</item>
         <item>Hải Phòng</item>
     </string-array>
+    <string-array name="city_array_2">
+        <item>Tất cả</item>
+        <item>Hà Nội</item>
+        <item>Hồ Chí Minh</item>
+        <item>Hưng Yên</item>
+        <item>Hải Dương</item>
+        <item>Hải Phòng</item>
+    </string-array>
     <string-array name="subject_array">
         <item>Toán</item>
         <item>Văn</item>
@@ -47,5 +55,10 @@
         <item>Lý</item>
         <item>Hoá</item>
         <item>CNTT</item>
+    </string-array>
+    <string-array name="state_array">
+        <item>Tất cả</item>
+        <item>Đã nhận</item>
+        <item>Chưa nhận</item>
     </string-array>
 </resources>

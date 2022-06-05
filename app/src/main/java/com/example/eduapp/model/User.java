@@ -111,6 +111,20 @@ public class User {
         this.subjectList = subjectList;
     }
 
+    public void updateUser(String email, String userName, String firstName, String lastName, String phone, Gender gender, String address, String cityId, boolean isStudent, String imgUrl, Integer price, List<String> subjectList){
+        this.email = email;
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.gender = gender;
+        this.address = address;
+        this.cityId = cityId;
+        this.isStudent = isStudent;
+        this.imgUrl = imgUrl;
+        this.price = price;
+        this.subjectList = subjectList;
+    }
 
     public String getPassword() {
         return password;

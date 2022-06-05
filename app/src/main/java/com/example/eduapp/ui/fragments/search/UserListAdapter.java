@@ -43,7 +43,7 @@ public class UserListAdapter extends BaseRvAdapter<ItemPopularTeacherBinding, Li
 
     Glide.with(mContext)
         .load(user.getImgUrl())
-        .circleCrop()
+        .circleCrop().error(R.drawable.ic_user)
         .into(binding.profileImage);
   }
 }

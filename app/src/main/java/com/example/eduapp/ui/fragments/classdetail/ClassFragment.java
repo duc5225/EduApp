@@ -1,6 +1,7 @@
 package com.example.eduapp.ui.fragments.classdetail;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.view.View;
 
 import androidx.core.content.res.ResourcesCompat;
@@ -17,6 +18,7 @@ import com.example.eduapp.model.Transaction;
 import com.example.eduapp.model.User;
 import com.example.eduapp.ui.fragments.history.HistoryViewModel;
 import com.example.eduapp.ui.fragments.userprofile.ProfileFragment;
+import com.example.eduapp.util.GlobalUtil;
 
 public class ClassFragment extends BaseDialogFragment<HistoryViewModel, FragmentClassBinding> {
   Class aClass;
@@ -56,14 +58,37 @@ public class ClassFragment extends BaseDialogFragment<HistoryViewModel, Fragment
       }
     });
     binding.authorImg.setOnClickListener(v -> showDialogFragment(new ProfileFragment(user)));
-
+    binding.deleteBtn.setOnClickListener(v -> {
+      showConfirmDialog("Xác nhận", "Bạn có thực sự muốn xoá", new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+          viewModel.deleteClass(aClass);
+          dismiss();
+        }
+      });
+    });
     viewModel.isStudent(isStudent -> {
-      if (isStudent || !aClass.getTaken().isEmpty()) {
+      if (isStudent) {
         binding.paddingBottom.setVisibility(View.GONE);
         binding.takeClassLayout.setVisibility(View.GONE);
+
+        binding.deleteBtn.setText("Xoá lớp");
+        if (aClass.getUserId().equals(viewModel.getCUid())) binding.deleteBtn.setVisibility(View.VISIBLE);
+        else binding.deleteBtn.setVisibility(View.GONE);
       } else {
-        binding.paddingBottom.setVisibility(View.VISIBLE);
-        binding.takeClassLayout.setVisibility(View.VISIBLE);
+        if (!aClass.getTaken().isEmpty()){
+          binding.paddingBottom.setVisibility(View.GONE);
+          binding.takeClassLayout.setVisibility(View.GONE);
+
+          binding.deleteBtn.setText("Huỷ nhận lớp");
+          if (aClass.getTaken().equals(viewModel.getCUid())) binding.deleteBtn.setVisibility(View.VISIBLE);
+          else binding.deleteBtn.setVisibility(View.GONE);
+        }
+        else {
+          binding.paddingBottom.setVisibility(View.VISIBLE);
+          binding.takeClassLayout.setVisibility(View.VISIBLE);
+          binding.deleteBtn.setVisibility(View.GONE);
+        }
 
         binding.takeBtn.setOnClickListener(v -> viewModel.setTaken(aClass.getId(), viewModel.getCUid(), object -> {
           viewModel.addNotification(viewModel.getCUid(), new Notification(5, new NotiExParam(aClass.getPrice(), aClass.getId(), aClass.getName(), user.getImgUrl())));
@@ -76,12 +101,12 @@ public class ClassFragment extends BaseDialogFragment<HistoryViewModel, Fragment
       }
     });
 
-    binding.classTitle.setText(aClass.getName());
+    binding.classTitle.setText("Tên lớp: " + aClass.getName());
     binding.authorName.setText("Người đăng: " + user.getFirstName() + " " + user.getLastName());
     binding.state.setText("Tình trạng: " + (aClass.getTaken().isEmpty() || aClass.getTaken() == null ? "Chưa có người nhận" : "Đã có người nhận"));
     binding.topic.setText("Chủ đề: " + aClass.getTopic());
     binding.length.setText("Thời gian dạy: " + aClass.getLengthInMinute() + " phút");
-    viewModel.getCityName(aClass.getCityId(), object -> binding.address.setText("Địa chỉ: " + aClass.getAddress() + " - " + object));
+    binding.address.setText("Địa chỉ: " + aClass.getAddress() + " - " + GlobalUtil.convertCity(aClass.getCityId()));
     binding.phone.setText("Điện thoại: " + aClass.getPhone());
     binding.price.setText("Giá tiền: " + aClass.getPrice() + " token");
     binding.form.setText("Hình thức học: " + (aClass.isOnline() ? "Online" : "Offline"));

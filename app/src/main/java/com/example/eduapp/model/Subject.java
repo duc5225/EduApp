@@ -9,15 +9,17 @@ public class Subject {
     private int imageSubject;
     private String name;
     private String quantitySubject;
+    private Boolean isStudent;
 
     public Subject() {
     }
 
-    public Subject(int id, int imageSubject, String name, String quantitySubject) {
+    public Subject(int id, int imageSubject, String name, String quantitySubject, Boolean isStudent) {
         Id = id;
         this.imageSubject = imageSubject;
         this.name = name;
         this.quantitySubject = quantitySubject;
+        this.isStudent = isStudent;
     }
 
     public Subject(int imageSubject, String name, String quantitySubject) {
@@ -56,6 +58,14 @@ public class Subject {
 
     public void setQuantitySubject(String quantitySubject) {
         this.quantitySubject = quantitySubject;
+    }
+
+    public Boolean getStudent() {
+        return isStudent;
+    }
+
+    public void setStudent(Boolean student) {
+        isStudent = student;
     }
 
     @Override()

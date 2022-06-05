@@ -38,6 +38,6 @@ public class CourseTopicsViewPager extends BaseRvAdapter<ItemPagerCardBinding, L
     binding.tvTeacherNumber.setText(city.getNumberOfCourses());
     Glide.with(mContext).load(city.getImageResource()).transform(new CenterCrop()).into(binding.image);
 
-    binding.cardViewCourse.setOnClickListener(v -> matchSubjectClickListener.onScrollPagerItemClick(data.get(position), binding.image));
+    binding.cardViewCourse.setOnClickListener(v -> matchSubjectClickListener.onScrollPagerItemClick(position));
   }
 }

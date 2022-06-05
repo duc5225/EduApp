@@ -18,6 +18,7 @@ public interface BaseScreen {
   void showPopupMessage(String title, String message, DialogInterface.OnDismissListener onDismissListener);
   void showErrorMessage(String message, DialogInterface.OnDismissListener onDismissListener);
   void showDialogFragment(DialogFragment dialogFragment);
+  void showConfirmDialog(String title, String message, DialogInterface.OnClickListener onPositiveButtonListener);
   void showLoadingView();
   void hideLoadingView();
 

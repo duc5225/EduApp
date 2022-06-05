@@ -194,6 +194,11 @@ public abstract class BaseDialogFragment<T extends BaseViewModel, Y extends View
   }
 
   @Override
+  public void showConfirmDialog(String title, String message, DialogInterface.OnClickListener onPositiveButtonListener) {
+    FragmentFactory.showConfirmDialog(getActivity(), title, message, onPositiveButtonListener);
+  }
+
+  @Override
   public void showLoadingView() {
     FragmentFactory.showLoadingDialog(getActivity());
   }

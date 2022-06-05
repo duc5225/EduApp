@@ -49,4 +49,31 @@ public class HistoryViewModel extends BaseViewModel {
       onCompleted.onFinish(classList);
     });
   }
+
+  public void getAllClass(OnCompleted<List<Class>> onCompleted){
+    connector.getAllClass(onCompleted);
+  }
+
+  public void getAllTutors(OnCompleted<List<User>> onCompleted) {
+    List<User> users = new ArrayList<>();
+    connector.getAllUsers(new OnCompleted<List<User>>() {
+      @Override
+      public void onFinish(List<User> object) {
+        for (User user: object) {
+          if (!user.isStudent()){
+            users.add(user);
+          }
+        }
+        onCompleted.onFinish(users);
+      }
+    });
+  }
+
+  public void deleteClass(Class aClass) {
+    if (aClass.getTaken().equals(getCUid())){
+      connector.removeTaken(aClass.getId(), aClass.getTaken());
+    }
+
+    else connector.deleteClass(aClass.getId());
+  }
 }

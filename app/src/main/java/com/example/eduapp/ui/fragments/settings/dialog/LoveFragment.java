@@ -10,11 +10,14 @@ import com.example.eduapp.base.ui.BaseDialogFragment;
 import com.example.eduapp.databinding.FragmentLoveBinding;
 import com.example.eduapp.model.Class;
 import com.example.eduapp.model.User;
+import com.example.eduapp.ui.fragments.classdetail.ClassFragment;
 import com.example.eduapp.ui.fragments.history.adapter.ClassRvAdapter;
 import com.example.eduapp.ui.fragments.history.adapter.OnClassItemClick;
+import com.example.eduapp.ui.fragments.main.MainFragment;
 import com.example.eduapp.ui.fragments.search.SearchViewModel;
 import com.example.eduapp.ui.fragments.search.UserListAdapter;
 import com.example.eduapp.ui.fragments.settings.adapter.love.OnLoveItemClickListener;
+import com.example.eduapp.ui.fragments.userprofile.ProfileFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +31,7 @@ public class LoveFragment extends BaseDialogFragment<SearchViewModel, FragmentLo
   @Override
   public void doViewCreated(View view) {
     super.doViewCreated(view);
-    viewModel = new SearchViewModel();
+    viewModel = MainFragment.searchViewModel;
 
     setupRv();
   }
@@ -47,8 +50,8 @@ public class LoveFragment extends BaseDialogFragment<SearchViewModel, FragmentLo
           viewModel.getUserData(aClass.getUserId(), user -> {
             usernameList.add(user.getFirstName() + " " + user.getLastName());
             if (object.size() == usernameList.size()){
-              ClassRvAdapter adapter = new ClassRvAdapter(object, usernameList, viewModel, (OnClassItemClick) (aClass1, user1) -> {
-
+              ClassRvAdapter adapter = new ClassRvAdapter(object, usernameList, viewModel, (aClass1, user1) -> {
+                showDialogFragment(new ClassFragment(aClass, user));
               });
               binding.rv.setAdapter(adapter);
               adapter.notifyDataSetChanged();
@@ -61,7 +64,9 @@ public class LoveFragment extends BaseDialogFragment<SearchViewModel, FragmentLo
     viewModel.getAllUserLove(viewModel.getCUid(), new OnCompleted<List<User>>() {
       @Override
       public void onFinish(List<User> object) {
-        UserListAdapter adapter = new UserListAdapter(object, user -> {});
+        UserListAdapter adapter = new UserListAdapter(object, user -> {
+          showDialogFragment(new ProfileFragment(user));
+        });
         binding.rv2.setAdapter(adapter);
         adapter.notifyDataSetChanged();
       }

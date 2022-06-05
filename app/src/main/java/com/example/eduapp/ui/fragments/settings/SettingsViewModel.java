@@ -19,12 +19,6 @@ public class SettingsViewModel extends BaseViewModel {
   }
 
   public void editProfile(User user, OnCompleted<String> onCompleted){
-    settingsConnector.getUser(user.getId(), new OnCompleted<User>() {
-      @Override
-      public void onFinish(User object) {
-
-      }
-    });
     settingsConnector.editProfile(user, onCompleted);
   }
 

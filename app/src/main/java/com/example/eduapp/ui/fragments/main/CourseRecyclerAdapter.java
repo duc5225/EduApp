@@ -53,7 +53,7 @@ public class CourseRecyclerAdapter extends BaseRvAdapter<ItemSubjectBinding, Lis
     holder.itemView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        coursesDashboardSubjectItemClickListener.onDashboardSubjectClick(data.get(position), binding.cardViewImage);
+        coursesDashboardSubjectItemClickListener.onDashboardSubjectClick(position);
       }
     });
   }

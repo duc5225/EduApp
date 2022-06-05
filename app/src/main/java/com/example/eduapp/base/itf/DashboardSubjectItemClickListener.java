@@ -6,5 +6,5 @@ import com.example.eduapp.model.Subject;
 
 public interface DashboardSubjectItemClickListener {
 
-  void onDashboardSubjectClick(Subject subject, ImageView imageView);
+  void onDashboardSubjectClick(Integer position);
 }

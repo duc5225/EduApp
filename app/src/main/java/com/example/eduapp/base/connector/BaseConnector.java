@@ -138,8 +138,7 @@ public class BaseConnector {
       @Override
       public void  onDataChange(DataSnapshot dataSnapshot) {
         Map<String, Boolean> classData = (Map<String,Boolean>) dataSnapshot.getValue();
-        List<String> result = new ArrayList<>(classData.keySet());
-        onCompleted.onFinish(result);
+        if (classData != null) onCompleted.onFinish(new ArrayList<>(classData.keySet()));
       }
 
       @Override
@@ -152,9 +151,9 @@ public class BaseConnector {
   public void getAllClassLove(String userId, OnCompleted<List<Class>> onCompleted){
     getListClassLove(userId, object -> getAllClass(object1 -> {
       List<Class> classes = new ArrayList<>();
-      for (Class aClass : object1) {
-        for (String id : object) {
-          if (aClass.getId() == id) classes.add(aClass);
+      for (String id : object) {
+        for (Class aClass : object1) {
+          if (aClass.getId().equals(id)) classes.add(aClass);
         }
       }
       onCompleted.onFinish(classes);
@@ -166,8 +165,7 @@ public class BaseConnector {
       @Override
       public void  onDataChange(DataSnapshot dataSnapshot) {
         Map<String, Boolean> userData = (Map<String,Boolean>) dataSnapshot.getValue();
-        List<String> result = new ArrayList<>(userData.keySet());
-        onCompleted.onFinish(result);
+        if (userData != null) onCompleted.onFinish(new ArrayList<>(userData.keySet()));
       }
 
       @Override
@@ -180,9 +178,9 @@ public class BaseConnector {
   public void getAllUserLove(String userId, OnCompleted<List<User>> onCompleted){
     getListUserLove(userId, object -> getAllUsers(object1 -> {
       List<User> users = new ArrayList<>();
-      for (User user : object1) {
-        for (String id : object) {
-          if (user.getId() == id) users.add(user);
+      for (String id : object) {
+        for (User user : object1) {
+          if (user.getId().equals(id)) users.add(user);
         }
       }
       onCompleted.onFinish(users);
@@ -220,6 +218,22 @@ public class BaseConnector {
   public void getUser(String id, OnCompleted<User> onCompleted) {
     DatabaseReference reference = mDatabase.getReference("Users");
     reference.child(id).addValueEventListener(new ValueEventListener() {
+      @Override
+      public void onDataChange(@NonNull DataSnapshot snapshot) {
+        User subject = snapshot.getValue(User.class);
+        onCompleted.onFinish(subject);
+      }
+
+      @Override
+      public void onCancelled(@NonNull DatabaseError error) {
+        onCompleted.onError(error.toString());
+      }
+    });
+  }
+
+  public void getUserOnce(String id, OnCompleted<User> onCompleted) {
+    DatabaseReference reference = mDatabase.getReference("Users");
+    reference.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
       @Override
       public void onDataChange(@NonNull DataSnapshot snapshot) {
         User subject = snapshot.getValue(User.class);
@@ -339,5 +353,117 @@ public class BaseConnector {
         onCompleted.onError(t.toString());
       }
     });
+  }
+
+  public void countSubjectClass(OnCompleted<Integer[]> onCompleted) {
+    DatabaseReference reference = mDatabase.getReference("Class");
+
+    reference.addValueEventListener(new ValueEventListener() {
+      @Override
+      public void onDataChange(@NonNull DataSnapshot snapshot) {
+        Integer[] count = {0, 0, 0, 0, 0, 0};
+        for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+          Class aClass = postSnapshot.getValue(Class.class);
+          for (Integer i = 0; i < 6; i++) {
+            if (aClass.getSubjectId().endsWith((i + 1) + "")) {
+              count[i]++;
+            }
+          }
+        }
+        onCompleted.onFinish(count);
+      }
+
+      @Override
+      public void onCancelled(@NonNull DatabaseError error) {
+        onCompleted.onError(error.toString());
+      }
+    });
+  }
+
+  public void countSubjectUser(OnCompleted<Integer[]> onCompleted) {
+    DatabaseReference reference = mDatabase.getReference("Users");
+
+    reference.addValueEventListener(new ValueEventListener() {
+      @Override
+      public void onDataChange(@NonNull DataSnapshot snapshot) {
+        Integer[] count = {0, 0, 0, 0, 0, 0};
+        for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+          User user = postSnapshot.getValue(User.class);
+          if (user.getSubjectList() != null) for (String string : user.getSubjectList()) {
+            for (Integer i = 0; i < 6; i++) {
+              if (string.endsWith((i + 1) + "")) {
+                count[i]++;
+              }
+            }
+          }
+        }
+        onCompleted.onFinish(count);
+      }
+
+      @Override
+      public void onCancelled(@NonNull DatabaseError error) {
+        onCompleted.onError(error.toString());
+      }
+    });
+  }
+
+  public void countCityClass(OnCompleted<Integer[]> onCompleted) {
+    DatabaseReference reference = mDatabase.getReference("Class");
+
+    reference.addValueEventListener(new ValueEventListener() {
+      @Override
+      public void onDataChange(@NonNull DataSnapshot snapshot) {
+        Integer[] count = {0, 0, 0, 0, 0};
+        for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+          Class aClass = postSnapshot.getValue(Class.class);
+          for (Integer i = 0; i < 5; i++) {
+            if (aClass.getCityId().endsWith((i + 1) + "")) {
+              count[i]++;
+            }
+          }
+        }
+        onCompleted.onFinish(count);
+      }
+
+      @Override
+      public void onCancelled(@NonNull DatabaseError error) {
+        onCompleted.onError(error.toString());
+      }
+    });
+  }
+
+  public void countCityUser(OnCompleted<Integer[]> onCompleted) {
+    DatabaseReference reference = mDatabase.getReference("Users");
+
+    reference.addValueEventListener(new ValueEventListener() {
+      @Override
+      public void onDataChange(@NonNull DataSnapshot snapshot) {
+        Integer[] count = {0, 0, 0, 0, 0};
+        for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+          User user = postSnapshot.getValue(User.class);
+          for (Integer i = 0; i < 5; i++) {
+            if (user.getCityId().endsWith((i + 1) + "") && !user.isStudent()) {
+              count[i]++;
+            }
+          }
+        }
+        onCompleted.onFinish(count);
+      }
+
+      @Override
+      public void onCancelled(@NonNull DatabaseError error) {
+        onCompleted.onError(error.toString());
+      }
+    });
+  }
+
+  public void removeTaken(String classId, String takenId) {
+    DatabaseReference reference = mDatabase.getReference("Class");
+    reference.child(classId).child("taken").setValue("");
+  }
+
+  public void deleteClass(String id) {
+    DatabaseReference reference = mDatabase.getReference("Class");
+    reference.child(id).removeValue();
   }
 }

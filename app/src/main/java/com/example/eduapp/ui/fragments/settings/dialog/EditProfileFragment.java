@@ -107,15 +107,21 @@ public class EditProfileFragment extends BaseDialogFragment<SettingsViewModel, F
 
       if (isStudent) subjectList.clear();
 
-      User user = new User(email, username, firstname, lastname, phone, gender, address, "city1", isStudent, "", price, subjectList);
-
-      viewModel.editProfile(user, new OnCompleted<String>() {
+      viewModel.getUserDataOnce(viewModel.getCUid(), new OnCompleted<User>() {
         @Override
-        public void onFinish(String object) {
-          showErrorMessage(object, null);
-          dismiss();
+        public void onFinish(User object) {
+          object.updateUser(email, username, firstname, lastname, phone, gender, address, "city1", isStudent, "", price, subjectList);
+          viewModel.editProfile(object, new OnCompleted<String>() {
+            @Override
+            public void onFinish(String object) {
+              showErrorMessage(object, null);
+              dismiss();
+            }
+          });
         }
       });
+
+
     });
   }
 

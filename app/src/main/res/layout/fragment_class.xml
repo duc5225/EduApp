@@ -298,6 +298,21 @@
                             android:textSize="18sp" />
                     </androidx.cardview.widget.CardView>
 
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/delete_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@+id/description_fill"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginTop="@dimen/smallPadding"
+                        android:background="@drawable/round_corner"
+                        android:backgroundTint="@color/red"
+                        android:text="Xoá lớp"
+                        android:layout_marginBottom="@dimen/normalPadding"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
                 </RelativeLayout>
 
                 <View
